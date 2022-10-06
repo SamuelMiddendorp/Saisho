@@ -1,5 +1,7 @@
 package com.SaishoStudios.Saisho.Core.Example;
 
+import com.SaishoStudios.Saisho.Core.Constants.Saisho;
+import org.joml.Vector3f;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
@@ -20,7 +22,6 @@ public class Main {
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
-
         init();
         loop();
 

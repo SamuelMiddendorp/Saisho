@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Utils/Maths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Input/InputManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Saisho.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
