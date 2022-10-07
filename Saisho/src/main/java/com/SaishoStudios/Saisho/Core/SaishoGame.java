@@ -1,40 +1,49 @@
-package com.SaishoStudios.Saisho.Core.Example;
+package com.SaishoStudios.Saisho.Core;
 
-import com.SaishoStudios.Saisho.Core.Constants.Saisho;
-import org.joml.Vector3f;
-import org.lwjgl.*;
-import org.lwjgl.glfw.*;
-import org.lwjgl.opengl.*;
-import org.lwjgl.system.*;
+import com.SaishoStudios.Saisho.Core.Input.InputManager;
+import org.lwjgl.Version;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.system.MemoryStack;
 
-import java.nio.*;
+import java.nio.IntBuffer;
 
-import static org.lwjgl.glfw.Callbacks.*;
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryStack.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.system.MemoryStack.stackPush;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Main {
+public abstract class SaishoGame {
+    protected final SaishoLogger logger = new SaishoLogger();
 
-    // The window handle
+    protected final InputManager inputManager = new InputManager();
     private long window;
+    protected void setWindowTitle(String value){
+        glfwSetWindowTitle(window, value);
+    }
+    public SaishoGame(){
 
-    public void run() {
-        System.out.println("Hello LWJGL " + Version.getVersion() + "!");
+    }
+    public void start(){
+        initializeCoreSystems();
+    }
+    public void initializeCoreSystems(){
+        logger.log("Initalizing systems");
+        initializeGLFW();
+        logger.log("Hello LWJGL " + Version.getVersion() + "!");
+        inputManager.init(window);
         init();
         loop();
-
-        // Free the window callbacks and destroy the window
         glfwFreeCallbacks(window);
         glfwDestroyWindow(window);
-
-        // Terminate GLFW and free the error callback
         glfwTerminate();
         glfwSetErrorCallback(null).free();
     }
-
-    private void init() {
+    private void initializeGLFW() {
         // Setup an error callback. The default implementation
         // will print the error message in System.err.
         GLFWErrorCallback.createPrint(System.err).set();
@@ -102,7 +111,8 @@ public class Main {
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-
+            update(0.01f);
+            fixedUpdate(0.01f);
             glfwSwapBuffers(window); // swap the color buffers
 
             // Poll for window events. The key callback above will only be
@@ -111,8 +121,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        new Main().run();
-    }
-
+    public abstract void init();
+    public abstract void update(float dt);
+    public abstract void fixedUpdate(float dt);
 }
