@@ -1,13 +1,18 @@
 package com.SaishoStudios.Saisho.Core;
 
-import com.SaishoStudios.Saisho.Core.Input.InputManager;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
+import org.lwjgl.BufferUtils;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
+import java.nio.DoubleBuffer;
 import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -16,6 +21,14 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
+
+import com.SaishoStudios.Saisho.Core.Graphics.RawModel;
+import com.SaishoStudios.Saisho.Core.Graphics.Renderer;
+import com.SaishoStudios.Saisho.Core.Graphics.StaticShader;
+import com.SaishoStudios.Saisho.Core.Input.InputManager;
+import com.SaishoStudios.Saisho.Core.Utils.Maths;
+import static com.SaishoStudios.Saisho.Core.Constants.Saisho.*;
+
 
 public abstract class SaishoGame {
     protected final SaishoLogger logger = new SaishoLogger();
@@ -58,7 +71,7 @@ public abstract class SaishoGame {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(300, 300, "Hello World!", NULL, NULL);
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
 
@@ -103,22 +116,212 @@ public abstract class SaishoGame {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
-
         // Set the clear color
-        glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
-
+        glClearColor(0.0f, 0.0f, 0.6f, 0.0f);
+        glEnable(GL_DEPTH_TEST);
+        glLineWidth(8.0f);
+        StaticShader shader = new StaticShader();
+        Renderer renderer = new Renderer(shader);
+        Camera camera = new TopDownCamera();
+        camera.move(new Vector3f(0f, 0f, 0));
+        Loader loader = new Loader();
+        RawModel floor = OBJLoader.loadObjModel("main/models/floor", loader);
+        RawModel model = OBJLoader.loadObjModel("main/models/dab_on_em", loader);
+        RawModel tile = OBJLoader.loadObjModel("main/models/tile", loader);
+        MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
+        Entity floorEnt = new Entity(floor, new Vector3f(0.0f, 0.0f, 0.0f),1,0,0,0);
+        Entity player = new Entity(model
+                ,new Vector3f(-0.0f,1.0f,0),0.5f,0,0,0);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
-        while ( !glfwWindowShouldClose(window) ) {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-            update(0.01f);
-            fixedUpdate(0.01f);
-            glfwSwapBuffers(window); // swap the color buffers
+        Vector3f ray = mousePicker.getCurrentRay();
+        List<RawModel> linesToDraw = new ArrayList<>();
+        List<Entity> entities = new ArrayList<>(createEntityGrid(tile));
 
+        while ( !glfwWindowShouldClose(window) ) {
+
+
+            if(inputManager.keys[GLFW_KEY_W]){
+                //player.increasePosition(0.1f, 0.0f, -0.1f);
+                player.increasePosition(0.1f, 0.0f, -0.1f);
+                camera.move(new Vector3f(0.1f, 0.0f, -0.1f));
+                //player.setRotY(135f);
+
+            }
+            if(inputManager.keys[GLFW_KEY_S]){
+                //player.setRotY(-45f);
+                //camera.increaseYaw(0.2f);
+                player.increasePosition(-0.1f, 0.0f, 0.1f);
+                camera.move(new Vector3f(-0.1f, 0.0f, 0.1f));
+                //camera.move(Maths.invertV3(camera.getM_cameraFront()));
+            }
+            if(inputManager.keys[GLFW_KEY_A]){
+                //player.setRotY(-135f);
+                camera.move(new Vector3f(-0.05f, 0.0f, -0.05f));
+                player.increasePosition(-0.05f, 0.0f, -0.05f);
+            }
+            if(inputManager.keys[GLFW_KEY_D]){
+                //camera.increaseYaw(0.2f);
+                //player.setRotY(45f);
+                camera.move(new Vector3f(0.05f, 0.0f, 0.05f));
+                player.increasePosition(0.05f, 0.0f, 0.05f);
+            }
+            if(inputManager.keys[GLFW_KEY_E]){
+                //camera.increaseYaw(0.2f);
+                camera.move(new Vector3f(0.0f, 0.05f, 0.0f));
+            }
+            if(inputManager.keys[GLFW_KEY_Q]){
+                //camera.increaseYaw(0.2f);
+                camera.increasePitch(0.005f);
+            }
+            if(inputManager.keys[GLFW_KEY_L]){
+                renderer.changePerspective();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if(inputManager.keys[GLFW_KEY_B]){
+                float[] positions = mousePicker.calculateOrthoRay();
+                String foo = "";
+                for(float pos: positions){
+                    foo = foo.concat(Math.round(pos) + "_");
+                }
+                glfwSetWindowTitle(window, foo);
+            }
+            if(inputManager.keys[GLFW_KEY_M]){
+                player.setFront(new Vector3f(4.0f, 0.0f, -10.0f).normalize());
+            }
+            if(inputManager.keys[2]){
+                //camera.move(new Vector3f(0.0f, 0.05f, 0.0f));
+                camera.increasePitch(-0.2f);
+                //camera.increaseYaw(-0.2f);
+            }
+            if(inputManager.keys[3]){
+                //camera.move(new Vector3f(0.0f, 0.05f, 0.0f));
+                camera.move(new Vector3f(0.0f, -0.1f, 0.0f));
+                //camera.increaseYaw(-0.2f);
+            }
+            if(inputManager.keys[GLFW_KEY_P]) {
+                Vector3f intersection = getIntersectingPlane(camera.getPosition(), ray);
+                System.out.println(intersection.x + " " + intersection.z);
+                int posX = (intersection.x > 0) ? (int) intersection.x : (int) intersection.x - 1;
+                int posZ = (intersection.z > 0) ? (int) intersection.z : (int) intersection.z - 1;
+                Entity entity = new Entity(tile, new Vector3f(posX, 0.0f, posZ), 1f, 0, 0, 0);
+                entities.add(entity);
+            }
+            if(inputManager.mouseButtons[0]){
+                System.out.println(camera.getPosition());
+                float[] verticescam = mousePicker.calculateOrthoRay();
+                float[] verticesOrtho = {
+                        verticescam[0],verticescam[1],verticescam[2],
+                        verticescam[0] + verticescam[3] * 1000,verticescam[1] + verticescam[4] * 1000,verticescam[2] + verticescam[5] * 1000
+                };
+//                float[] vertices = {
+//
+//                        camera.getPosition().x, camera.getPosition().y, camera.getPosition().z,
+//                        camera.getPosition().x + ray.x * 1000, camera.getPosition().y + ray.y * 1000, camera.getPosition().z  + ray.z * 1000
+//                };
+//                float[] toOrigin = {
+//                        ray.x * 100, ray.y * -100, ray.z * 100,
+//                        0.0f, 0.0f, 0.0f
+//                };
+                float[] verticesCamera = {
+                        camera.getPosition().x, camera.getPosition().y, camera.getPosition().z,
+                        0.0f, 0.0f, 0.0f
+                };
+                float[] verticesSimple = {
+                        0.0f, 4.0f, 5.0f,
+                        4.0f, 3.0f, 0.0f
+                };
+                Vector3f intersection = getIntersectingPlane(new Vector3f(verticescam[0],verticescam[1],verticescam[2]), new Vector3f(verticescam[3], verticescam[4], verticescam[5]));
+                RawModel line = loader.loadToVao(verticesOrtho);
+                int posX = (intersection.x > 0) ? (int) intersection.x + 1 : (int) intersection.x - 1;
+                int posZ = (intersection.z > 0) ? (int) intersection.z + 1 : (int) intersection.z - 1;
+                if(posX <= 30 && posZ < 30){
+                    // entities.get(30 * posX + posZ).setScale(0.0000001f);
+                }
+
+                linesToDraw.add(line);
+
+            }
+            if(inputManager.mouseButtons[1]){
+                camera.increaseYaw(inputManager.mouseDelta.x / 4);
+                camera.increasePitch(inputManager.mouseDelta.y / 4);
+            }
+
+
+
+            inputManager.resetMouseDelta();
+
+            DoubleBuffer xBuffer = BufferUtils.createDoubleBuffer(1);
+            DoubleBuffer yBuffer = BufferUtils.createDoubleBuffer(1);
+            glfwGetCursorPos(window, xBuffer, yBuffer);
+            double x = xBuffer.get(0);
+            double y = yBuffer.get(0);
+            mousePicker.setMouseCoords(x,y);
+            float[] verticescam = mousePicker.calculateOrthoRay();
+            Vector3f intersection = getIntersectingPlane(new Vector3f(verticescam[0],verticescam[1],verticescam[2]), new Vector3f(verticescam[3], verticescam[4], verticescam[5]));
+            intersection = new Vector3f(15, 0, -15);
+            player.setFront(intersection.sub(player.getPosition(),new Vector3f()));
+            //setPlayerRotation(player, intersection);
+            //glfwSetWindowTitle(window, ray.x + " " + ray.y + " " + ray.z);
+            //player.setPosition(new Vector3f((int)intersection.x, 0.0f, (int)intersection.z));
+            shader.start();
+            shader.loadLightPos(new Vector3f(5.0f, 3.0f, -5.0f));
+            shader.loadViewMatrix(camera);
+            //player.setRotY((float)Math.sin(glfwGetTime()) * 360);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+            //player.setPosition(new Vector3f(0.0f, inputManager.mouseDelta.y, 0.0f);
+            //player.setPosition(new Vector3f((float)Math.sin(glfwGetTime())*10,  0.0f, -(float)Math.sin(glfwGetTime())*10));
+            //renderer.render(floorEnt, shader);
+            for (Entity entity: entities) {
+                renderer.render(entity, shader);
+                //entity.increaseRotation(0.2f, 0.2f, 0.2f);
+            }
+            for (RawModel line: linesToDraw){
+                renderer.renderDebugLines(line);
+            }
+            renderer.render(player, shader);
+            shader.stop();
+            glfwSwapBuffers(window); // swap the color buffers
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
         }
+        shader.cleanUp();
+        loader.cleanUp();
+    }
+    private float map(float a, float b, float c, float d, float value){
+        return (value - a) * ((d - c) / (b - a)) + c;
+
+    }
+    private void setPlayerRotation(Entity player, Vector3f intersection){
+        float angle = new Vector2f(player.getPosition().x, player.getPosition().z).normalize().dot(new Vector2f(intersection.x, intersection.z).normalize());
+        float yaw = map(-1, 1, 0, 180, angle);
+        player.setRotY(yaw);
+        player.increaseRotation(0.0f, -45f, 0.0f);
+    }
+
+    private Vector3f getIntersectingPlane(Vector3f cameraPos, Vector3f ray){
+        Vector3f planeNormal = new Vector3f(0.0f, 1.0f, 0.0f);
+        Vector3f pointOnPlane = new Vector3f(2.0f, 0.0f, 4.0f);
+        Vector3f v = new Vector3f(ray);
+        Vector3f w = new Vector3f(Maths.subtractV3(pointOnPlane, cameraPos));
+        float k = w.dot(planeNormal)/v.dot(planeNormal);
+        Vector3f intersect =  Maths.addV3(cameraPos,v.mul(k));
+        //glfwSetWindowTitle(window, intersect.x + " " + intersect.y + " " + intersect.z);
+        return intersect;
+    }
+    private List<Entity> createEntityGrid(RawModel model){
+        List<Entity> entities = new ArrayList<>();
+        for(int x = 0; x < 30; x++){
+            for(int z = -30; z < 0; z++) {
+                entities.add(new Entity(model, new Vector3f(x, 0.0f, z), 1, 0, 0, 0));
+            }
+        }
+        return entities;
     }
 
     public abstract void init();
