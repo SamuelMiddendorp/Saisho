@@ -1,48 +1,43 @@
 package com.SaishoStudios.Saisho.Core;
 
 import com.SaishoStudios.Saisho.Core.Graphics.RawModel;
+import com.SaishoStudios.Saisho.Core.Utils.Maths;
+import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import static java.lang.Math.atan2;
 
 public class Entity {
     private RawModel model;
+    private Vector3f position;
+    private float scale;
+    private Quaternionf rotation = new Quaternionf();
+
+    public Quaternionf getRotation() {
+        return rotation;
+    }
 
     public void setPosition(Vector3f position) {
         this.position = position;
     }
-    private Vector3f position;
-
-    private float scale;
-
-    public void setRotY(float rotY) {
-        this.rotY = rotY;
+    public void setRotation(Vector3f plane, float angle){
+        rotation.setAngleAxis(angle, plane.x, plane.y, plane.z);
     }
-    public void setFront(Vector3f front){
-        rotY = (float)Math.toDegrees(atan2(front.z, front.x)) + 180;
-        System.out.println(rotY);
-    }
-    private float rotX, rotY, rotZ;
 
-    public Entity(RawModel model, Vector3f position, float scale, float rotX, float rotY, float rotZ) {
+    public Entity(RawModel model, Vector3f position, float scale) {
         this.model = model;
         this.position = position;
         this.scale = scale;
-        this.rotX = rotX;
-        this.rotY = rotY;
-        this.rotZ = rotZ;
     }
     public void increasePosition(float dx, float dy, float dz){
         this.position.x += dx;
         this.position.y += dy;
         this.position.z += dz;
     }
-    public void increaseRotation(float dx,   float dy, float dz){
-        this.rotX+= dx;
-        this.rotY += dy;
-        this.rotZ += dz;
+    public void lookAt(Vector3f front){
+        Vector3f dir = front.sub(position, new Vector3f()).normalize();
+        rotation.rotationTo(new Vector3f(0,0,1), dir);
     }
-
     public RawModel getModel() {
         return model;
     }
@@ -53,18 +48,6 @@ public class Entity {
 
     public float getScale() {
         return scale;
-    }
-
-    public float getRotX() {
-        return rotX;
-    }
-
-    public float getRotY() {
-        return rotY;
-    }
-
-    public float getRotZ() {
-        return rotZ;
     }
 
     public void setScale(float scale) {

@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/Models/dab_on_em.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Models/floor.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Models/tile.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/RawModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/ShaderProgram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/StaticShader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Loader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/MousePicker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/OBJLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/TopDownCamera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/shaders/vertexShader.vs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/notes/quaternion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Constants/Saisho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/SaishoGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Utils/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Utils/Maths.java" afterDir="false" />
     </list>
@@ -60,7 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "last_directory_selection": "C:/Saisho/Saisho/Saisho/src/main/java/com/SaishoStudios/Saisho/Core",
-    "last_opened_file_path": "C:/Saisho/Saisho/Saisho/src/main/Models"
+    "last_opened_file_path": "C:/Saisho/Saisho/Saisho/src"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -73,6 +60,7 @@
       <recent name="com.SaishoStudios.Saisho.Core" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Saisho\Saisho\Saisho\src" />
       <recent name="C:\Saisho\Saisho\Saisho\src\main\Models" />
       <recent name="C:\Saisho\Saisho\Saisho\src\main\java\com\SaishoStudios\Saisho\Core" />
     </key>

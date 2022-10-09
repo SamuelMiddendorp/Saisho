@@ -2,17 +2,16 @@ package com.SaishoStudios.Saisho.Core.Utils;
 
 import com.SaishoStudios.Saisho.Core.Camera;
 import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import static com.SaishoStudios.Saisho.Core.Constants.Saisho.*;
 
 public class Maths {
-    public static Matrix4f createTransformationMatrix(Vector3f translation, float rx, float ry, float rz, float scale){
+    public static Matrix4f createTransformationMatrix(Vector3f translation, Quaternionf rotation, float scale){
         Matrix4f matrix = new Matrix4f();
         matrix.translate(translation);
-        matrix.rotate((float) Math.toRadians(rx), new Vector3f(1,0,0));
-        matrix.rotate((float) Math.toRadians(ry), new Vector3f(0,1,0));
-        matrix.rotate((float) Math.toRadians(rz), new Vector3f(0,0,1));
+        matrix.rotate(rotation);
         matrix.scale(new Vector3f(scale, scale, scale));
         return matrix;
     }
@@ -27,6 +26,23 @@ public class Maths {
     }
     public static Matrix4f createViewMatrix(Vector3f pos, Vector3f  front, Vector3f up) {
         return new Matrix4f().lookAt(pos, pos.add(front, new Vector3f()), up);
+    }
+    public static Quaternionf mul(Quaternionf m, Vector3f r)
+    {
+        float w = -m.x * r.x - m.y * r.y - m.z * r.z;
+        float x =  m.w * r.x + m.y * r.z - m.z * r.y;
+        float y =  m.w * r.y + m.z * r.x- m.x * r.z;
+        float z =  m.w * r.z + m.x * r.y - m.y * r.x;
+
+        return new Quaternionf(x, y, z, w);
+    }
+    public static Vector3f rotate(Quaternionf quat, Vector3f rotation)
+    {
+        Quaternionf conjugate = quat.conjugate(new Quaternionf());
+
+        Quaternionf w = mul(quat, rotation).mul(conjugate, new Quaternionf());
+
+        return new Vector3f(w.x, w.y, w.z);
     }
     public static Matrix4f createOrthographicProjection(){
         return new Matrix4f().ortho(-20, 20f, -20f,20f, NEAR_PLANE , FAR_PLANE);

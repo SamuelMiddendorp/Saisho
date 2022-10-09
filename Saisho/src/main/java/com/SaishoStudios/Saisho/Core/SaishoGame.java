@@ -129,9 +129,9 @@ public abstract class SaishoGame {
         RawModel model = OBJLoader.loadObjModel("main/models/dab_on_em", loader);
         RawModel tile = OBJLoader.loadObjModel("main/models/tile", loader);
         MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
-        Entity floorEnt = new Entity(floor, new Vector3f(0.0f, 0.0f, 0.0f),1,0,0,0);
+        Entity floorEnt = new Entity(floor, new Vector3f(0.0f, 0.0f, 0.0f),1);
         Entity player = new Entity(model
-                ,new Vector3f(-0.0f,1.0f,0),0.5f,0,0,0);
+                ,new Vector3f(-0.0f,1.0f,0),0.5f);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         Vector3f ray = mousePicker.getCurrentRay();
@@ -191,7 +191,7 @@ public abstract class SaishoGame {
                 glfwSetWindowTitle(window, foo);
             }
             if(inputManager.keys[GLFW_KEY_M]){
-                player.setFront(new Vector3f(4.0f, 0.0f, -10.0f).normalize());
+                player.lookAt(new Vector3f(10.0f, 0.0f, -10.0f));
             }
             if(inputManager.keys[2]){
                 //camera.move(new Vector3f(0.0f, 0.05f, 0.0f));
@@ -208,7 +208,7 @@ public abstract class SaishoGame {
                 System.out.println(intersection.x + " " + intersection.z);
                 int posX = (intersection.x > 0) ? (int) intersection.x : (int) intersection.x - 1;
                 int posZ = (intersection.z > 0) ? (int) intersection.z : (int) intersection.z - 1;
-                Entity entity = new Entity(tile, new Vector3f(posX, 0.0f, posZ), 1f, 0, 0, 0);
+                Entity entity = new Entity(tile, new Vector3f(posX, 0.0f, posZ), 1f);
                 entities.add(entity);
             }
             if(inputManager.mouseButtons[0]){
@@ -263,8 +263,9 @@ public abstract class SaishoGame {
             mousePicker.setMouseCoords(x,y);
             float[] verticescam = mousePicker.calculateOrthoRay();
             Vector3f intersection = getIntersectingPlane(new Vector3f(verticescam[0],verticescam[1],verticescam[2]), new Vector3f(verticescam[3], verticescam[4], verticescam[5]));
-            intersection = new Vector3f(15, 0, -15);
-            player.setFront(intersection.sub(player.getPosition(),new Vector3f()));
+            //intersection = new Vector3f(15, 0, -15);
+            player.lookAt(intersection);
+            //player.setRotation(new Vector3f(0, 1, 0), (float)Math.toRadians(Math.max(Math.sin(glfwGetTime()), 0) * 360));
             //setPlayerRotation(player, intersection);
             //glfwSetWindowTitle(window, ray.x + " " + ray.y + " " + ray.z);
             //player.setPosition(new Vector3f((int)intersection.x, 0.0f, (int)intersection.z));
@@ -297,12 +298,6 @@ public abstract class SaishoGame {
         return (value - a) * ((d - c) / (b - a)) + c;
 
     }
-    private void setPlayerRotation(Entity player, Vector3f intersection){
-        float angle = new Vector2f(player.getPosition().x, player.getPosition().z).normalize().dot(new Vector2f(intersection.x, intersection.z).normalize());
-        float yaw = map(-1, 1, 0, 180, angle);
-        player.setRotY(yaw);
-        player.increaseRotation(0.0f, -45f, 0.0f);
-    }
 
     private Vector3f getIntersectingPlane(Vector3f cameraPos, Vector3f ray){
         Vector3f planeNormal = new Vector3f(0.0f, 1.0f, 0.0f);
@@ -318,7 +313,7 @@ public abstract class SaishoGame {
         List<Entity> entities = new ArrayList<>();
         for(int x = 0; x < 30; x++){
             for(int z = -30; z < 0; z++) {
-                entities.add(new Entity(model, new Vector3f(x, 0.0f, z), 1, 0, 0, 0));
+                entities.add(new Entity(model, new Vector3f(x, 0.0f, z), 1));
             }
         }
         return entities;

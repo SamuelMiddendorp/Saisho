@@ -34,9 +34,7 @@ public class Renderer {
         GL30.glEnableVertexAttribArray(1);
         GL30.glEnableVertexAttribArray(2);
         Matrix4f transformationMatrix = Maths.createTransformationMatrix(entity.getPosition()
-                                                                         , entity.getRotX()
-                                                                         , entity.getRotY()
-                                                                         , entity.getRotZ()
+                                                                         , entity.getRotation()
                                                                          , entity.getScale());
         //transformationMatrix = Maths.OffSetMatrix(transformationMatrix, new Vector3f(0.5f, 0.0f, 0.5f));
         shader.loadTransformationMatrix(transformationMatrix);
