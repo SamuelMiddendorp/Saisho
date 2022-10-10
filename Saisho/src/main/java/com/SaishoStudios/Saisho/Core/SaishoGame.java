@@ -71,7 +71,7 @@ public abstract class SaishoGame {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", glfwGetPrimaryMonitor(), NULL);
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
 
@@ -126,7 +126,7 @@ public abstract class SaishoGame {
         camera.move(new Vector3f(0f, 0f, 0));
         Loader loader = new Loader();
         RawModel floor = OBJLoader.loadObjModel("main/models/floor", loader);
-        RawModel model = OBJLoader.loadObjModel("main/models/dab_on_em", loader);
+        RawModel model = OBJLoader.loadObjModel("main/models/dragon", loader);
         RawModel tile = OBJLoader.loadObjModel("main/models/tile", loader);
         MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
         Entity floorEnt = new Entity(floor, new Vector3f(0.0f, 0.0f, 0.0f),1);
@@ -143,7 +143,7 @@ public abstract class SaishoGame {
 
             if(inputManager.keys[GLFW_KEY_W]){
                 //player.increasePosition(0.1f, 0.0f, -0.1f);
-                player.increasePosition(0.1f, 0.0f, -0.1f);
+                //player.increasePosition(0.1f, 0.0f, -0.1f);
                 camera.move(new Vector3f(0.1f, 0.0f, -0.1f));
                 //player.setRotY(135f);
 
@@ -151,7 +151,7 @@ public abstract class SaishoGame {
             if(inputManager.keys[GLFW_KEY_S]){
                 //player.setRotY(-45f);
                 //camera.increaseYaw(0.2f);
-                player.increasePosition(-0.1f, 0.0f, 0.1f);
+                //player.increasePosition(-0.1f, 0.0f, 0.1f);
                 camera.move(new Vector3f(-0.1f, 0.0f, 0.1f));
                 //camera.move(Maths.invertV3(camera.getM_cameraFront()));
             }
@@ -270,7 +270,7 @@ public abstract class SaishoGame {
             //glfwSetWindowTitle(window, ray.x + " " + ray.y + " " + ray.z);
             //player.setPosition(new Vector3f((int)intersection.x, 0.0f, (int)intersection.z));
             shader.start();
-            shader.loadLightPos(new Vector3f(5.0f, 3.0f, -5.0f));
+            shader.loadLightPos(new Vector3f((float)Math.sin(glfwGetTime()) * 10, 3.0f, -5.0f));
             shader.loadViewMatrix(camera);
             //player.setRotY((float)Math.sin(glfwGetTime()) * 360);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer

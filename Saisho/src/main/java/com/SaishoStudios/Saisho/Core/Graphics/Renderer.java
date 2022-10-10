@@ -55,6 +55,7 @@ public class Renderer {
     public void changeToOrtho(){
         projectionMatrix = new Matrix4f();
         projectionMatrix.ortho(-20, 20f, -20f,20f, NEAR_PLANE - 20, FAR_PLANE);
+        isPerspectiveMatrix = false;
         //_shader.loadProjectionMatrix(projectionMatrix);
     }
     private void createProjectionMatrix(){
