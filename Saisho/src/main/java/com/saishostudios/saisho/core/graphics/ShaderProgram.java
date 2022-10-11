@@ -1,4 +1,4 @@
-package com.SaishoStudios.Saisho.Core.Graphics;
+package com.saishostudios.saisho.core.graphics;
 
 import org.joml.Matrix4f;
 import org.joml.Vector3f;

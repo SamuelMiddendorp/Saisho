@@ -1,8 +1,8 @@
 package example;
 
-import com.SaishoStudios.Saisho.Core.SaishoGame;
+import com.saishostudios.saisho.core.SaishoGame;
 
-import static com.SaishoStudios.Saisho.Core.Constants.SaishoKeys.*;
+import static com.saishostudios.saisho.core.constants.SaishoKeys.*;
 
 public class SampleGame extends SaishoGame {
 

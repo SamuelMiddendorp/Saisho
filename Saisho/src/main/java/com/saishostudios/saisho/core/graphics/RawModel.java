@@ -1,4 +1,4 @@
-package com.SaishoStudios.Saisho.Core.Graphics;
+package com.saishostudios.saisho.core.graphics;
 
 public class RawModel {
     private int vaoID;

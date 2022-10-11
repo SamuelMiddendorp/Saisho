@@ -5,18 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/models/bunny.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/dragon.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/notes/descisions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Models/dab_on_em.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/dab_on_em.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Models/floor.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/floor.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Models/tile.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/tile.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Constants/Saisho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/SaishoGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Constants/SaishoKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/SaishoKeys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/RawModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/RawModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/StaticShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Input/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/input/InputManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/MousePicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/MousePicker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/OBJLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/OBJLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/SaishoLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/TopDownCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/TopDownCamera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Utils/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +77,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "last_directory_selection": "C:/Saisho/Saisho/Saisho/src/main/java/com/SaishoStudios/Saisho/Core",
-    "last_opened_file_path": "/home/smiddendorp/Documents/GitHub/Saisho/Saisho/src/main/models"
+    "last_opened_file_path": "/home/smiddendorp/Documents/GitHub/Saisho/Saisho/src/main/models",
+    "settings.editor.selected.configurable": "preferences.keymap"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -145,15 +154,10 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/StaticShader.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/StaticShader.java</url>
           <line>8</line>
-          <properties field="VS_PATH" class="com.SaishoStudios.Saisho.Core.Graphics.StaticShader" />
+          <properties field="VS_PATH" class="com.saishostudios.saisho.core.graphics.StaticShader" />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/SaishoStudios/Saisho/Core/Graphics/ShaderProgram.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

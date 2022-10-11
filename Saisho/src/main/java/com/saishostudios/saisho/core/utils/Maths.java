@@ -1,18 +1,20 @@
-package com.SaishoStudios.Saisho.Core.Utils;
+package com.saishostudios.saisho.core.utils;
 
-import com.SaishoStudios.Saisho.Core.Camera;
+import com.saishostudios.saisho.core.Camera;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-import static com.SaishoStudios.Saisho.Core.Constants.Saisho.*;
+import static com.saishostudios.saisho.core.constants.Saisho.*;
 
 public class Maths {
     public static Matrix4f createTransformationMatrix(Vector3f translation, Quaternionf rotation, float scale){
         Matrix4f matrix = new Matrix4f();
+
         matrix.translate(translation);
-        matrix.rotate(rotation);
         matrix.scale(new Vector3f(scale, scale, scale));
+        matrix.rotate(rotation.normalize());
+
         return matrix;
     }
     public static Matrix4f createViewMatrix(Camera camera) {

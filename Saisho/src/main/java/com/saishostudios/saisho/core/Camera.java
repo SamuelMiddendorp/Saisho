@@ -1,4 +1,4 @@
-package com.SaishoStudios.Saisho.Core;
+package com.saishostudios.saisho.core;
 
 import org.joml.Vector3f;
 

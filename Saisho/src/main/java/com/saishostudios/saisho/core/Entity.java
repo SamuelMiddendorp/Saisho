@@ -1,11 +1,8 @@
-package com.SaishoStudios.Saisho.Core;
+package com.saishostudios.saisho.core;
 
-import com.SaishoStudios.Saisho.Core.Graphics.RawModel;
-import com.SaishoStudios.Saisho.Core.Utils.Maths;
+import com.saishostudios.saisho.core.graphics.RawModel;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
-
-import static java.lang.Math.atan2;
 
 public class Entity {
     private RawModel model;
@@ -36,7 +33,18 @@ public class Entity {
     }
     public void lookAt(Vector3f front){
         Vector3f dir = front.sub(position, new Vector3f()).normalize();
+
         rotation.rotationTo(new Vector3f(0,0,1), dir);
+        rotation.x = 0;
+        //rotation.y = 0;
+        //rotation.mul(new Quaternionf().setAngleAxis(0.0,1.0,0.0, Math.toRadians(-90)));
+        System.out.println(rotation);
+    }
+    public void lookAt2(Vector3f front){
+
+        Vector3f dir = front.sub(position, new Vector3f()).normalize();
+
+        rotation.rotateTo(new Vector3f(0,1,0), dir);
     }
     public RawModel getModel() {
         return model;

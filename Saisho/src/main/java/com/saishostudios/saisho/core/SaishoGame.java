@@ -1,6 +1,6 @@
-package com.SaishoStudios.Saisho.Core;
+package com.saishostudios.saisho.core;
 
-import org.joml.Vector2f;
+import com.saishostudios.saisho.core.utils.Maths;
 import org.joml.Vector3f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.Version;
@@ -22,12 +22,12 @@ import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-import com.SaishoStudios.Saisho.Core.Graphics.RawModel;
-import com.SaishoStudios.Saisho.Core.Graphics.Renderer;
-import com.SaishoStudios.Saisho.Core.Graphics.StaticShader;
-import com.SaishoStudios.Saisho.Core.Input.InputManager;
-import com.SaishoStudios.Saisho.Core.Utils.Maths;
-import static com.SaishoStudios.Saisho.Core.Constants.Saisho.*;
+import com.saishostudios.saisho.core.graphics.RawModel;
+import com.saishostudios.saisho.core.graphics.Renderer;
+import com.saishostudios.saisho.core.graphics.StaticShader;
+import com.saishostudios.saisho.core.input.InputManager;
+
+import static com.saishostudios.saisho.core.constants.Saisho.*;
 
 
 public abstract class SaishoGame {
@@ -71,7 +71,7 @@ public abstract class SaishoGame {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", glfwGetPrimaryMonitor(), NULL);
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
 
@@ -126,7 +126,7 @@ public abstract class SaishoGame {
         camera.move(new Vector3f(0f, 0f, 0));
         Loader loader = new Loader();
         RawModel floor = OBJLoader.loadObjModel("main/models/floor", loader);
-        RawModel model = OBJLoader.loadObjModel("main/models/dragon", loader);
+        RawModel model = OBJLoader.loadObjModel("main/models/dab_on_em", loader);
         RawModel tile = OBJLoader.loadObjModel("main/models/tile", loader);
         MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
         Entity floorEnt = new Entity(floor, new Vector3f(0.0f, 0.0f, 0.0f),1);
@@ -140,7 +140,9 @@ public abstract class SaishoGame {
 
         while ( !glfwWindowShouldClose(window) ) {
 
-
+            if(inputManager.keys[GLFW_KEY_ESCAPE]){
+                glfwSetWindowShouldClose(window, true);
+            }
             if(inputManager.keys[GLFW_KEY_W]){
                 //player.increasePosition(0.1f, 0.0f, -0.1f);
                 //player.increasePosition(0.1f, 0.0f, -0.1f);

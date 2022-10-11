@@ -1,4 +1,4 @@
-package com.SaishoStudios.Saisho.Core.Input;
+package com.saishostudios.saisho.core.input;
 
 import org.joml.Vector2f;
 import org.lwjgl.glfw.GLFW;

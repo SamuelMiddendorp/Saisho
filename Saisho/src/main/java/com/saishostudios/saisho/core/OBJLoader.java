@@ -1,6 +1,6 @@
-package com.SaishoStudios.Saisho.Core;
+package com.saishostudios.saisho.core;
 
-import com.SaishoStudios.Saisho.Core.Graphics.RawModel;
+import com.saishostudios.saisho.core.graphics.RawModel;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 

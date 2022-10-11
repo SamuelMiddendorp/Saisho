@@ -1,12 +1,11 @@
-package com.SaishoStudios.Saisho.Core.Graphics;
+package com.saishostudios.saisho.core.graphics;
 
-import com.SaishoStudios.Saisho.Core.Entity;
-import com.SaishoStudios.Saisho.Core.Utils.Maths;
+import com.saishostudios.saisho.core.Entity;
+import com.saishostudios.saisho.core.utils.Maths;
+import com.saishostudios.saisho.core.constants.Saisho;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
-
-import static com.SaishoStudios.Saisho.Core.Constants.Saisho.*;
 
 public class Renderer {
     private static final float FOV = 70;
@@ -54,21 +53,21 @@ public class Renderer {
     }
     public void changeToOrtho(){
         projectionMatrix = new Matrix4f();
-        projectionMatrix.ortho(-20, 20f, -20f,20f, NEAR_PLANE - 20, FAR_PLANE);
+        projectionMatrix.ortho(-20, 20f, -20f,20f, Saisho.NEAR_PLANE - 20, Saisho.FAR_PLANE);
         isPerspectiveMatrix = false;
         //_shader.loadProjectionMatrix(projectionMatrix);
     }
     private void createProjectionMatrix(){
-        float aspectRatio = (float) WIDTH / (float) HEIGHT;
+        float aspectRatio = (float) Saisho.WIDTH / (float) Saisho.HEIGHT;
         float y_scale = (float) ((1f / Math.tan(Math.toRadians(FOV / 2f))) * aspectRatio);
         float x_scale = y_scale / aspectRatio;
-        float frustum_length = FAR_PLANE - NEAR_PLANE;
+        float frustum_length = Saisho.FAR_PLANE - Saisho.NEAR_PLANE;
         projectionMatrix = new Matrix4f();
         projectionMatrix.m00(x_scale);
         projectionMatrix.m11(y_scale);
-        projectionMatrix.m22(-((FAR_PLANE + NEAR_PLANE) / frustum_length));
+        projectionMatrix.m22(-((Saisho.FAR_PLANE + Saisho.NEAR_PLANE) / frustum_length));
         projectionMatrix.m23(-1);
-        projectionMatrix.m32(-((2 * NEAR_PLANE * FAR_PLANE) / frustum_length));
+        projectionMatrix.m32(-((2 * Saisho.NEAR_PLANE * Saisho.FAR_PLANE) / frustum_length));
         projectionMatrix.m33(0);
         //changeToOrtho();
     }

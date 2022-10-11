@@ -1,4 +1,4 @@
-package com.SaishoStudios.Saisho.Core;
+package com.saishostudios.saisho.core;
 
 public class TopDownCamera extends Camera{
     public TopDownCamera() {

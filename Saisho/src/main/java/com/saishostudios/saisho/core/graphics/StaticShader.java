@@ -1,7 +1,7 @@
-package com.SaishoStudios.Saisho.Core.Graphics;
+package com.saishostudios.saisho.core.graphics;
 
-import com.SaishoStudios.Saisho.Core.Camera;
-import com.SaishoStudios.Saisho.Core.Utils.Maths;
+import com.saishostudios.saisho.core.Camera;
+import com.saishostudios.saisho.core.utils.Maths;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 

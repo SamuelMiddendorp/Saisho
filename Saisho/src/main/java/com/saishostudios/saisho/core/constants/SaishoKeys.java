@@ -1,4 +1,4 @@
-package com.SaishoStudios.Saisho.Core.Constants;
+package com.saishostudios.saisho.core.constants;
 
 public class SaishoKeys {
     public static final int KEY_W = 87;

@@ -1,0 +1,5 @@
+For world management probably go scene based.
+Scene contains a world.
+Scene has access to core engine stuff.
+
+Rendering and mousepicking are based on perspective or orthographic projection

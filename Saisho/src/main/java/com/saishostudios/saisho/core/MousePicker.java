@@ -1,12 +1,11 @@
-package com.SaishoStudios.Saisho.Core;
+package com.saishostudios.saisho.core;
 
-import com.SaishoStudios.Saisho.Core.Utils.Maths;
+import com.saishostudios.saisho.core.utils.Maths;
+import com.saishostudios.saisho.core.constants.Saisho;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
-
-import static com.SaishoStudios.Saisho.Core.Constants.Saisho.*;
 
 public class MousePicker {
     public Vector3f getCurrentRay() {
@@ -50,28 +49,9 @@ public class MousePicker {
         currentRay = new Vector3f(boxRay.x, boxRay.y, boxRay.z);
         return new Vector3f(boxRay.x, boxRay.y, boxRay.z);
     }
-    private Vector3f toWorldCoords(Vector4f eyeCoords) {
-
-        Matrix4f invertedView = new Matrix4f(viewMatrix).invert();
-        Vector4f rayWorld = invertedView.transform(eyeCoords);
-        Vector3f mouseRay = new Vector3f(rayWorld.x, rayWorld.y, camera.getPosition().z);
-        mouseRay.normalize();
-        return mouseRay;
-    }
-
-    private Vector4f toEyeCoords(Vector3f clipCoords) {
-        Matrix4f invertedProjection = new Matrix4f(projectionMatrix).invert();
-        Vector3f eyeCoords = invertedProjection.transformPosition(clipCoords);
-        return new Vector4f(eyeCoords.x, eyeCoords.y, -1.0f, 0f);
-    }
-    private Vector4f toEyeCoordsOrtho(Vector3f clipCoords) {
-        Matrix4f invertedProjection = new Matrix4f(projectionMatrix).invert();
-        Vector3f eyeCoords = invertedProjection.transformPosition(clipCoords);
-        return new Vector4f(eyeCoords.x, eyeCoords.y, -1.0f, 0f);
-    }
     public Vector2f getNormalizedDeviceCoords(double mouseX, double mouseY){
-        float x = (2f*(float)mouseX) / WIDTH - 1;
-        float y = 1.0f - (2f*(float)mouseY) / HEIGHT;
+        float x = (2f*(float)mouseX) / Saisho.WIDTH - 1;
+        float y = 1.0f - (2f*(float)mouseY) / Saisho.HEIGHT;
         return new Vector2f(x, y);
     }
 
