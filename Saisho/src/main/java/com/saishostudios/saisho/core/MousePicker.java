@@ -39,7 +39,7 @@ public class MousePicker {
                 rayDirection.x, rayDirection.y, rayDirection.z
         };
     }
-    private Vector3f calculateMouseRay() {
+    public Vector3f calculateMouseRay() {
         Vector2f normalizedCoords = getNormalizedDeviceCoords(mouseX, mouseY);
         Vector4f boxRay = new Vector4f(normalizedCoords.x, normalizedCoords.y, 1, 0);
 

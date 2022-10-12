@@ -8,7 +8,7 @@ public class InputManager {
     public boolean mouseInWindow = false;
     private boolean firstMouse = true;
     public Vector2f mouseDelta = new Vector2f();
-    public boolean[] keys = new boolean[65535];
+    public static boolean[] keys = new boolean[65535];
 
     public boolean[] mouseButtons = new boolean[3];
     public void resetMouseDelta(){

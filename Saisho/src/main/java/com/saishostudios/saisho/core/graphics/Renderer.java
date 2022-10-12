@@ -13,8 +13,8 @@ public class Renderer {
     private boolean isPerspectiveMatrix = true;
     private Matrix4f projectionMatrix;
     public Renderer(StaticShader shader){
-        changeToOrtho();
-        //createProjectionMatrix();
+        //changeToOrtho();
+        createProjectionMatrix();
         _shader = shader;
         shader.start();
         shader.loadProjectionMatrix(projectionMatrix);
@@ -69,6 +69,7 @@ public class Renderer {
         projectionMatrix.m23(-1);
         projectionMatrix.m32(-((2 * Saisho.NEAR_PLANE * Saisho.FAR_PLANE) / frustum_length));
         projectionMatrix.m33(0);
+        isPerspectiveMatrix = true;
         //changeToOrtho();
     }
 

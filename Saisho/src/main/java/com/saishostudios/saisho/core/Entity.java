@@ -35,7 +35,7 @@ public class Entity {
         Vector3f dir = front.sub(position, new Vector3f()).normalize();
 
         rotation.rotationTo(new Vector3f(0,0,1), dir);
-        rotation.x = 0;
+        //rotation.x = 0;
         //rotation.y = 0;
         //rotation.mul(new Quaternionf().setAngleAxis(0.0,1.0,0.0, Math.toRadians(-90)));
         System.out.println(rotation);
