@@ -1,10 +1,15 @@
 package com.saishostudios.saisho.core.scratch;
 
+import com.saishostudios.saisho.core.World;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class GameObject {
+    private static World world;
+    private String tag = "";
     private List<Component> components = new ArrayList<>();
 
     public <T extends Component> T getComponent(Class<T> component) {
@@ -41,5 +46,16 @@ public class GameObject {
             throw new RuntimeException(e);
         }
         return comp;
+    }
+    public void withTag(String value){
+        tag = value;
+    }
+    public static GameObject findByTag(String tag){
+        for(GameObject go : world.getGameObjects()){
+            if(go.tag == tag){
+                return go;
+            }
+        }
+        return null;
     }
 }

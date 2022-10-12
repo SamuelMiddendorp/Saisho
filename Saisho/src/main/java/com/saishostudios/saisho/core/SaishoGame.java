@@ -11,6 +11,7 @@ import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
+import java.lang.reflect.Field;
 import java.nio.DoubleBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ import static com.saishostudios.saisho.core.constants.Saisho.*;
 
 
 public abstract class SaishoGame{
-    protected List<GameObject> world = new ArrayList<GameObject>();
+    protected World world = new World();
     protected final SaishoLogger logger = new SaishoLogger();
 
     protected final InputManager inputManager = new InputManager();
@@ -48,6 +49,17 @@ public abstract class SaishoGame{
         initializeCoreSystems();
     }
     public void initializeCoreSystems(){
+        try {
+            Field f = GameObject.class.getDeclaredField("world");
+            f.setAccessible(true);
+            try {
+                f.set(null, world);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
         logger.log("Initalizing systems");
         initializeGLFW();
         logger.log("Hello LWJGL " + Version.getVersion() + "!");
@@ -159,7 +171,7 @@ public abstract class SaishoGame{
             //player.setPosition(new Vector3f(0.0f, inputManager.mouseDelta.y, 0.0f);
             //player.setPosition(new Vector3f((float)Math.sin(glfwGetTime())*10,  0.0f, -(float)Math.sin(glfwGetTime())*10));
             //renderer.render(floorEnt, shader);
-            for (GameObject go : world) {
+            for (GameObject go : world.getGameObjects()) {
                 for (Component component : go.getComponents()) {
                     component.onUpdate(0.01f);
                 }

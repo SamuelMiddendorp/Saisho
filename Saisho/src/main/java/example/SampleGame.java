@@ -12,7 +12,7 @@ public class SampleGame extends SaishoGame {
     private GameObject player = new GameObject();
     @Override
     public void init() {
-
+        player.withTag("player");
         world.add(player);
         Transform transform = player.addComponent(Transform.class);
         transform.randomFloat = 5.0f;
