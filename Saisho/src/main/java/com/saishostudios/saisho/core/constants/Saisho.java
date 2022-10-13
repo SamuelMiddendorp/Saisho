@@ -9,5 +9,5 @@ public class Saisho {
     public static int WIDTH = 2560;
     public static int HEIGHT = 1440;
     public static float NEAR_PLANE = 0.1F;
-    public static float FAR_PLANE = 100;
+    public static float FAR_PLANE = 100f;
 }

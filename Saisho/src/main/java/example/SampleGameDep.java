@@ -1,12 +1,7 @@
 package example;
 
-import com.saishostudios.saisho.core.SaishoGame;
 import com.saishostudios.saisho.core.SaishoGame_dep;
 import com.saishostudios.saisho.core.scratch.GameObject;
-import com.saishostudios.saisho.core.scratch.Transform;
-import com.saishostudios.saisho.core.scratch.WASDControllerComponent;
-
-import static com.saishostudios.saisho.core.constants.SaishoKeys.KEY_W;
 
 public class SampleGameDep extends SaishoGame_dep {
     private GameObject player = new GameObject();

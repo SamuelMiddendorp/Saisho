@@ -60,6 +60,7 @@ public abstract class SaishoGame{
         } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
+        OBJLoader.setLoader(new Loader());
         logger.log("Initalizing systems");
         initializeGLFW();
         logger.log("Hello LWJGL " + Version.getVersion() + "!");
@@ -122,6 +123,7 @@ public abstract class SaishoGame{
 
         // Make the window visible
         glfwShowWindow(window);
+        GL.createCapabilities();
     }
 
     private void loop() {
@@ -130,32 +132,37 @@ public abstract class SaishoGame{
         // LWJGL detects the context that is current in the current thread,
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
-        GL.createCapabilities();
         // Set the clear color
         glClearColor(0.0f, 0.0f, 0.6f, 0.0f);
         glEnable(GL_DEPTH_TEST);
         glLineWidth(8.0f);
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(shader);
-        Camera camera = new TopDownCamera();
-        camera.move(new Vector3f(0f, 0f, 0));
+        Camera camera = new Camera();
+        camera.move(new Vector3f(0f, 10f, 10));
+        camera.increasePitch(-30f);
         Loader loader = new Loader();
-        RawModel floor = OBJLoader.loadObjModel("main/models/floor", loader);
-        RawModel model = OBJLoader.loadObjModel("main/models/dragon", loader);
-        RawModel tile = OBJLoader.loadObjModel("main/models/tile", loader);
         MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
-        Entity floorEnt = new Entity(floor, new Vector3f(0.0f, 0.0f, 0.0f),1);
-        Entity player = new Entity(model
-                ,new Vector3f(-0.0f,1.0f,0),0.5f);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         Vector3f ray = mousePicker.getCurrentRay();
         List<RawModel> linesToDraw = new ArrayList<>();
-        List<Entity> entities = new ArrayList<>(createEntityGrid(tile));
 
         while ( !glfwWindowShouldClose(window) ) {
             inputManager.resetMouseDelta();
+            if(inputManager.keys[GLFW_KEY_W]){
+                camera.move(new Vector3f(0.0f, 0.0f, -0.1f));
 
+            }
+            if(inputManager.keys[GLFW_KEY_S]){
+                camera.move(new Vector3f(0.0f, 0.0f, 0.1f));
+            }
+            if(inputManager.keys[GLFW_KEY_A]){
+                camera.move(new Vector3f(-0.1f, 0.0f, 0.0f));
+            }
+            if(inputManager.keys[GLFW_KEY_D]){
+                camera.move(new Vector3f(0.1f, 0.0f, 0.0f));
+            }
             DoubleBuffer xBuffer = BufferUtils.createDoubleBuffer(1);
             DoubleBuffer yBuffer = BufferUtils.createDoubleBuffer(1);
             glfwGetCursorPos(window, xBuffer, yBuffer);
@@ -176,9 +183,10 @@ public abstract class SaishoGame{
                     component.onUpdate(0.01f);
                 }
             }
+            Renderer.render();
             update(0.01f);
             //renderer.renderDebugLines(lineLook);
-            renderer.render(player, shader);
+            //renderer.render(player, shader);
             shader.stop();
             glfwSwapBuffers(window); // swap the color buffers
             // Poll for window events. The key callback above will only be

@@ -10,8 +10,13 @@ import java.util.List;
 public class GameObject {
     private static World world;
     private String tag = "";
-    private List<Component> components = new ArrayList<>();
 
+    public Transform transform;
+    private List<Component> components = new ArrayList<>();
+    public GameObject(){
+        transform = new Transform();
+        this.components.add(transform);
+    }
     public <T extends Component> T getComponent(Class<T> component) {
         for (Component comp : components) {
             if (comp.getClass() == component) {

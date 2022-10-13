@@ -10,10 +10,9 @@ import static com.saishostudios.saisho.core.constants.Saisho.*;
 public class Maths {
     public static Matrix4f createTransformationMatrix(Vector3f translation, Quaternionf rotation, float scale){
         Matrix4f matrix = new Matrix4f();
-
-        matrix.translate(translation);
         matrix.scale(new Vector3f(scale, scale, scale));
         matrix.rotate(rotation.normalize());
+        matrix.translate(translation);
 
         return matrix;
     }

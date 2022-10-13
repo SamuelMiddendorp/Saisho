@@ -8,6 +8,8 @@ public class Transform extends Component{
 
     public Vector3f position = new Vector3f();
 
+    public float scale = 1.0f;
+
     public Quaternionf rotation = new Quaternionf();
     @Override
     public void onUpdate(float deltaTime) {

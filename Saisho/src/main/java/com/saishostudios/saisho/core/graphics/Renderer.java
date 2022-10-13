@@ -1,15 +1,21 @@
 package com.saishostudios.saisho.core.graphics;
 
 import com.saishostudios.saisho.core.Entity;
+import com.saishostudios.saisho.core.scratch.Transform;
 import com.saishostudios.saisho.core.utils.Maths;
 import com.saishostudios.saisho.core.constants.Saisho;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Renderer {
     private static final float FOV = 70;
-    private StaticShader _shader;
+    private static StaticShader _shader;
+
+    private static List<RenderableObject> renderableObjects = new ArrayList<>();
     private boolean isPerspectiveMatrix = true;
     private Matrix4f projectionMatrix;
     public Renderer(StaticShader shader){
@@ -43,6 +49,27 @@ public class Renderer {
         GL30.glDisableVertexAttribArray(2);
         GL30.glBindVertexArray(0);
     }
+    public static void render(){
+        for(RenderableObject renderable : renderableObjects){
+            render(renderable.model, renderable.transform);
+        }
+    }
+    public static void render(RawModel model, Transform transform){
+        GL30.glBindVertexArray(model.getVaoID());
+        GL30.glEnableVertexAttribArray(0);
+        GL30.glEnableVertexAttribArray(1);
+        GL30.glEnableVertexAttribArray(2);
+        Matrix4f transformationMatrix = Maths.createTransformationMatrix(transform.position
+                , transform.rotation
+                , transform.scale);
+        //transformationMatrix = Maths.OffSetMatrix(transformationMatrix, new Vector3f(0.5f, 0.0f, 0.5f));
+        _shader.loadTransformationMatrix(transformationMatrix);
+        GL11.glDrawElements(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, 0);
+        GL30.glDisableVertexAttribArray(0);
+        GL30.glDisableVertexAttribArray(1);
+        GL30.glDisableVertexAttribArray(2);
+        GL30.glBindVertexArray(0);
+    }
     public void renderDebugLines(RawModel entity){
         _shader.loadTransformationMatrix(new Matrix4f());
         GL30.glBindVertexArray(entity.getVaoID());
@@ -50,6 +77,10 @@ public class Renderer {
         GL11.glDrawArrays(GL11.GL_LINES, 0, entity.getVertexCount());
         GL30.glDisableVertexAttribArray(0);
         GL30.glBindVertexArray(0);
+    }
+    public static void submit(RawModel model, Transform transform){
+        System.out.println("submitted" + model.getVaoID() + " " + transform.position);
+        renderableObjects.add(new RenderableObject(model, transform));
     }
     public void changeToOrtho(){
         projectionMatrix = new Matrix4f();
