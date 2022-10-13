@@ -1,6 +1,6 @@
 package com.saishostudios.saisho.core;
 
-import com.saishostudios.saisho.core.scratch.Component;
+import com.saishostudios.saisho.core.components.Component;
 import com.saishostudios.saisho.core.scratch.GameObject;
 import com.saishostudios.saisho.core.utils.Maths;
 import org.joml.Vector3f;

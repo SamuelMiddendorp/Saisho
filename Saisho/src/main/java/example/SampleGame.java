@@ -4,20 +4,17 @@ import com.saishostudios.saisho.core.OBJLoader;
 import com.saishostudios.saisho.core.SaishoGame;
 import com.saishostudios.saisho.core.graphics.RawModel;
 import com.saishostudios.saisho.core.scratch.GameObject;
-import com.saishostudios.saisho.core.scratch.MeshRenderer;
-import com.saishostudios.saisho.core.scratch.Transform;
-import com.saishostudios.saisho.core.scratch.WASDController;
+import com.saishostudios.saisho.core.components.MeshRenderer;
+import com.saishostudios.saisho.core.components.WASDController;
 import org.joml.Random;
 import org.joml.Vector3f;
-
-import static com.saishostudios.saisho.core.constants.SaishoKeys.*;
 
 public class SampleGame extends SaishoGame {
     private RawModel sampleModel;
     @Override
     public void init() {
         sampleModel = OBJLoader.loadObjModel("main/models/tile");
-        RawModel playerModel = OBJLoader.loadObjModel("main/models/dab_on_em");
+        RawModel playerModel = OBJLoader.loadObjModel("main/models/dragon");
         GameObject player = new GameObject();
         player.withTag("player");
         world.add(player);

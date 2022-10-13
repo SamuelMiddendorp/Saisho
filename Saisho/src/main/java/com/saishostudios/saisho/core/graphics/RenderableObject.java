@@ -1,7 +1,6 @@
 package com.saishostudios.saisho.core.graphics;
 
-import com.saishostudios.saisho.core.scratch.Transform;
-import org.joml.Vector3f;
+import com.saishostudios.saisho.core.components.Transform;
 
 public class RenderableObject {
     public RawModel model;

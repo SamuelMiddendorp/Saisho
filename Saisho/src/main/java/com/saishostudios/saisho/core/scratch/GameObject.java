@@ -1,10 +1,11 @@
 package com.saishostudios.saisho.core.scratch;
 
 import com.saishostudios.saisho.core.World;
+import com.saishostudios.saisho.core.components.Component;
+import com.saishostudios.saisho.core.components.Transform;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class GameObject {

@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Loader {
-    private List<Integer> vaos = new ArrayList<Integer>();
-    private List<Integer> vbos = new ArrayList<Integer>();
+    private static List<Integer> vaos = new ArrayList<Integer>();
+    private static List<Integer> vbos = new ArrayList<Integer>();
 
-    public RawModel loadToVao(float[] positions, float[] colors, float[] normals, int[] indices) {
+    public static RawModel loadToVao(float[] positions, float[] colors, float[] normals, int[] indices) {
         int vaoID = createVAO();
         bindIndicesBuffer(indices);
         storeDataInAttributesList(0, positions);
@@ -36,7 +36,7 @@ public class Loader {
         }
     }
 
-    private int createVAO() {
+    private static int createVAO() {
         int vaoID = GL30.glGenVertexArrays();
         vaos.add(vaoID);
         GL30.glBindVertexArray(vaoID);
@@ -44,7 +44,7 @@ public class Loader {
 
     }
 
-    private void storeDataInAttributesList(int attributeNumber, float[] data) {
+    private static void storeDataInAttributesList(int attributeNumber, float[] data) {
         int vboID = GL30.glGenBuffers();
         vbos.add(vboID);
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, vboID);
@@ -54,23 +54,23 @@ public class Loader {
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, 0);
     }
 
-    private void unbindVAO() {
+    private static void unbindVAO() {
         GL30.glBindVertexArray(0);
     }
-    private void bindIndicesBuffer(int[] indices){
+    private static void bindIndicesBuffer(int[] indices){
         int vboID = GL30.glGenBuffers();
         vbos.add(vboID);
         GL30.glBindBuffer(GL30.GL_ELEMENT_ARRAY_BUFFER, vboID);
         IntBuffer buffer = storeDataInIntBuffer(indices);
         GL30.glBufferData(GL30.GL_ELEMENT_ARRAY_BUFFER, buffer, GL30.GL_STATIC_DRAW);
     }
-    private IntBuffer storeDataInIntBuffer(int[] data){
+    private static IntBuffer storeDataInIntBuffer(int[] data){
         IntBuffer buffer = BufferUtils.createIntBuffer(data.length);
         buffer.put(data);
         buffer.flip();
         return buffer;
     }
-    private FloatBuffer storeDataInFloatBuffer(float[] data) {
+    private static FloatBuffer storeDataInFloatBuffer(float[] data) {
         FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
         buffer.put(data);
         buffer.flip();

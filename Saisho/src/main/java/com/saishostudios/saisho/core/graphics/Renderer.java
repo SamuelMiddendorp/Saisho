@@ -1,7 +1,7 @@
 package com.saishostudios.saisho.core.graphics;
 
 import com.saishostudios.saisho.core.Entity;
-import com.saishostudios.saisho.core.scratch.Transform;
+import com.saishostudios.saisho.core.components.Transform;
 import com.saishostudios.saisho.core.utils.Maths;
 import com.saishostudios.saisho.core.constants.Saisho;
 import org.joml.Matrix4f;
