@@ -13,6 +13,7 @@ public class Transform extends Component{
     public Quaternionf rotation = new Quaternionf();
     @Override
     public void onUpdate(float deltaTime) {
+
     }
 
     @Override

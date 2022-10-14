@@ -22,6 +22,17 @@ public class Loader {
         unbindVAO();
         return new RawModel(vaoID, indices.length);
     }
+    public static RawModel loadToVaoInstanced(float[] positions, float[] colors, float[] normals, int[] indices, float[] offsets) {
+        int vaoID = createVAO();
+        bindIndicesBuffer(indices);
+        storeDataInAttributesList(0, positions);
+        storeDataInAttributesList(1, colors);
+        storeDataInAttributesList(2, normals);
+        storeDataInAttributesList(3, offsets);
+        unbindVAO();
+        return new RawModel(vaoID, indices.length);
+    }
+
     public RawModel loadToVao(float[] positions){
         int vaoID = createVAO();
         storeDataInAttributesList(0, positions);
@@ -44,7 +55,7 @@ public class Loader {
 
     }
 
-    private static void storeDataInAttributesList(int attributeNumber, float[] data) {
+    public static void storeDataInAttributesList(int attributeNumber, float[] data) {
         int vboID = GL30.glGenBuffers();
         vbos.add(vboID);
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, vboID);

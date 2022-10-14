@@ -133,22 +133,28 @@ public abstract class SaishoGame{
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         // Set the clear color
+        //glEnable(GL_CULL_FACE);
         glClearColor(0.0f, 0.0f, 0.6f, 0.0f);
         glEnable(GL_DEPTH_TEST);
+
         glLineWidth(8.0f);
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(shader);
         Camera camera = new Camera();
-        camera.move(new Vector3f(0f, 10f, 10));
-        camera.increasePitch(-30f);
+        camera.move(new Vector3f(50f, 10f, 50));
+        camera.increasePitch(-5f);
         Loader loader = new Loader();
         MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         Vector3f ray = mousePicker.getCurrentRay();
         List<RawModel> linesToDraw = new ArrayList<>();
-
+        float dt = 0.1f;
+        double lastTime = glfwGetTime();
         while ( !glfwWindowShouldClose(window) ) {
+
+            dt = (float)(glfwGetTime() - lastTime);
+            lastTime = glfwGetTime();
             inputManager.resetMouseDelta();
             if(inputManager.keys[GLFW_KEY_W]){
                 camera.move(new Vector3f(0.0f, 0.0f, -0.1f));
@@ -170,9 +176,11 @@ public abstract class SaishoGame{
             double y = yBuffer.get(0);
             mousePicker.setMouseCoords(x,y);
             mousePicker.getCurrentRay();
+            //camera.getPosition().x +=1;
             shader.start();
             shader.loadLightPos(new Vector3f((float)Math.sin(glfwGetTime()) * 10, 3.0f, -5.0f));
             shader.loadViewMatrix(camera);
+            camera.move(new Vector3f(50f * dt, 0,-50f * dt));
             //player.setRotY((float)Math.sin(glfwGetTime()) * 360);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             //player.setPosition(new Vector3f(0.0f, inputManager.mouseDelta.y, 0.0f);
@@ -180,21 +188,28 @@ public abstract class SaishoGame{
             //renderer.render(floorEnt, shader);
             for (GameObject go : world.getGameObjects()) {
                 for (Component component : go.getComponents()) {
-                    component.onUpdate(0.01f);
+                    component.onUpdate(dt);
                 }
             }
-            Renderer.render();
-            update(0.01f);
+            update(dt);
+
+            render();
             //renderer.renderDebugLines(lineLook);
             //renderer.render(player, shader);
             shader.stop();
+            double f = glfwGetTime();
             glfwSwapBuffers(window); // swap the color buffers
+            System.out.println(("rendering time" + (glfwGetTime() - f) *1000));
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
+            glFinish();
         }
         shader.cleanUp();
         loader.cleanUp();
+    }
+    private void render(){
+        Renderer.render();
     }
     private float map(float a, float b, float c, float d, float value){
         return (value - a) * ((d - c) / (b - a)) + c;
