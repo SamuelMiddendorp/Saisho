@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/InstancedMeshRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/RenderableInstancedObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/david_boom.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/tree1.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/OBJLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/OBJLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/shaders/vertexShader.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shaders/vertexShader.vs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,11 +163,6 @@
           <line>8</line>
           <properties field="VS_PATH" class="com.saishostudios.saisho.core.graphics.StaticShader" />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

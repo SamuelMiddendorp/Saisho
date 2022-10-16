@@ -49,6 +49,7 @@ public abstract class SaishoGame{
         initializeCoreSystems();
     }
     public void initializeCoreSystems(){
+        // Set world of GameObject, might be slow because its using reflection but its only done once.
         try {
             Field f = GameObject.class.getDeclaredField("world");
             f.setAccessible(true);
@@ -203,7 +204,7 @@ public abstract class SaishoGame{
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
-            glFinish();
+            //glFinish();
         }
         shader.cleanUp();
         loader.cleanUp();

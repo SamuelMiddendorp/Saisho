@@ -17,8 +17,8 @@ public class SampleGame extends SaishoGame {
     private RawModel sampleModel;
     @Override
     public void init() {
-        List<Vector3f> offsets = createOffsets(100000);
-        sampleModel = OBJLoader.loadObjModelInstanced("main/models/tile", offsets);
+        List<Vector3f> offsets = createOffsets(1000);
+        sampleModel = OBJLoader.loadObjModelInstanced("main/models/david_boom", offsets);
         //RawModel playerModel = OBJLoader.loadObjModel("main/models/david_boom";
         GameObject player = new GameObject();
         player.withTag("player");
@@ -28,10 +28,10 @@ public class SampleGame extends SaishoGame {
         mesh.offSets = offsets;
         world.add(player);
         //player.transform.position = new Vector3f(1.0f, 1.0f, -2.0f);
-        player.transform.scale = 1.0f;
+        player.transform.scale = 2f;
 //        MeshRenderer mesh = player.addComponent(MeshRenderer.class);
 //        mesh.model = playerModel;
-        //player.addComponent(WASDController.class);
+        player.addComponent(WASDController.class);
 
 
         //createSomeGameObjetcs(10000, 20f);
@@ -59,7 +59,7 @@ public class SampleGame extends SaishoGame {
         Random rand = new Random();
         List<Vector3f> offsets = new ArrayList<>();
         for(int i = 0; i < count; i++){
-            offsets.add(new Vector3f((float)rand.nextInt((int)(count / 20)), 1.0f, -1 * (float)rand.nextInt((int)(count / 20))));
+            offsets.add(new Vector3f((float)rand.nextInt((int)(count / 10)), 1.0f, -1 * (float)rand.nextInt((int)(count / 10))));
         }
         return offsets;
     }

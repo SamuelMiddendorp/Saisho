@@ -100,7 +100,7 @@ public class Renderer {
                 , transform.scale);
         //transformationMatrix = Maths.OffSetMatrix(transformationMatrix, new Vector3f(0.5f, 0.0f, 0.5f));
         _shader.loadTransformationMatrix(transformationMatrix);
-        //GL40.glMultiDrawElements(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, 0);
+        //GL40.glDrawArraysInstanced(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, offsets.length /3);
         GL40.glDrawElementsInstanced(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, 0, offsets.length /3);
         GL30.glDisableVertexAttribArray(0);
         GL30.glDisableVertexAttribArray(1);
