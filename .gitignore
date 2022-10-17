@@ -35,3 +35,5 @@ gradle-app.setting
 
 # End of https://www.gitignore.io/api/java,gradle
 Saisho/.idea/workspace.xml
+Saisho/.idea/workspace.xml
+Saisho/build/tmp/compileJava/previous-compilation-data.bin

@@ -92,7 +92,7 @@ public abstract class SaishoGame{
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", glfwGetPrimaryMonitor(), NULL);
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
 
@@ -170,6 +170,12 @@ public abstract class SaishoGame{
             }
             if(inputManager.keys[GLFW_KEY_D]){
                 camera.move(new Vector3f(cameraSpeed * dt, 0.0f, 0.0f));
+            }
+            if(inputManager.keys[GLFW_KEY_E]){
+                camera.move(new Vector3f(0.0f, cameraSpeed * dt, 0.0f));
+            }
+            if(inputManager.keys[GLFW_KEY_Q]){
+                camera.move(new Vector3f(0.0f, -cameraSpeed * dt, 0.0f));
             }
             DoubleBuffer xBuffer = BufferUtils.createDoubleBuffer(1);
             DoubleBuffer yBuffer = BufferUtils.createDoubleBuffer(1);
