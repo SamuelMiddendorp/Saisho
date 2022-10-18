@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/SampleGameSimplex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/DispersionDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/SampleChunks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/models/multiple.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Dispersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Dispersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +99,33 @@
       <recent name="com.SaishoStudios.Saisho.Core.Utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SampleGameSimplex">
+  <component name="RunManager" selected="Application.DispersionDemo">
+    <configuration name="DispersionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.DispersionDemo" />
+      <module name="Saisho.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SampleChunks" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.SampleChunks" />
+      <module name="Saisho.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SampleGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="example.SampleGame" />
       <module name="Saisho.main" />
@@ -139,6 +167,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DispersionDemo" />
+        <item itemvalue="Application.SampleChunks" />
         <item itemvalue="Application.SampleGameSimplex" />
         <item itemvalue="Application.SampleGame" />
         <item itemvalue="Application.SampleGameDep" />

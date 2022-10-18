@@ -20,31 +20,13 @@ public class SampleGame extends SaishoGame {
     @Override
     public void init() {
 
-            sampleModel = OBJLoader.loadObjModel("main/models/dab_on_em");
-//        List<Vector3f> offsets = createOffsets(5000,8);
-        //sampleModel = OBJLoader.loadObjModelInstanced("main/models/david_boom", offsets);
-          //createSomeGameObjects(100_00,8);
-          createSomeGameObjectsWithConstraint(20000, 100);
-//            GameObject player = new GameObject();
-//
-//            InstancedMeshRenderer mesh = player.addComponent(InstancedMeshRenderer.class);
-//            mesh.model = sampleModel;
-//            mesh.offSets = offsets;
-//            player.transform.scale = 0.2f;
-//            world.add(player);
-            cameraSpeed = 200f;
-            camera.increasePitch(-75f);
-            camera.move(new Vector3f(50f, 450f, 0f));
-//        GameObject player = new GameObject();
-//        player.withTag("player");
-//        MeshRenderer mesh = player.addComponent(MeshRenderer.class);
-//        camera.move(new Vector3f(0f,100f,100));
-//        camera.increasePitch(-45f);
-//        mesh.model = sampleModel;
-//        world.add(player);
-//        player.addComponent(WASDController.class);
-//
-//        logger.log("Everything well");
+            sampleModel = OBJLoader.loadObjModel("main/models/multiple");
+            GameObject player = new GameObject();
+
+            InstancedMeshRenderer mesh = player.addComponent(InstancedMeshRenderer.class);
+            mesh.model = sampleModel;
+            player.transform.scale = 0.2f;
+            world.add(player);
     }
 
     @Override
