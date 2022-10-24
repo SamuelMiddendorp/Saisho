@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/DispersionDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/SampleChunks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/multiple.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RotateSin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/PrefabType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Prefab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/SamplePrefab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Dispersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Dispersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/MeshRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/MeshRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SampleGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/DefaultModelFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/DispersionDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/DispersionDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/SampleChunks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SampleChunks.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +52,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -99,7 +107,7 @@
       <recent name="com.SaishoStudios.Saisho.Core.Utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DispersionDemo">
+  <component name="RunManager" selected="Application.SamplePrefab">
     <configuration name="DispersionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="example.DispersionDemo" />
       <module name="Saisho.main" />
@@ -139,19 +147,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SampleGameDep" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="example.SampleGameDep" />
-      <module name="Saisho.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SampleGameSimplex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="example.SampleGameSimplex" />
       <module name="Saisho.main" />
@@ -165,13 +160,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SamplePrefab" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.SamplePrefab" />
+      <module name="Saisho.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SamplePrefab" />
         <item itemvalue="Application.DispersionDemo" />
         <item itemvalue="Application.SampleChunks" />
         <item itemvalue="Application.SampleGameSimplex" />
         <item itemvalue="Application.SampleGame" />
-        <item itemvalue="Application.SampleGameDep" />
       </list>
     </recent_temporary>
   </component>

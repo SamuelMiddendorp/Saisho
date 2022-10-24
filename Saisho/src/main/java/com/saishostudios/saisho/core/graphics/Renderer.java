@@ -81,7 +81,7 @@ public class Renderer {
                 , transform.scale);
         //transformationMatrix = Maths.OffSetMatrix(transformationMatrix, new Vector3f(0.5f, 0.0f, 0.5f));
         _shader.loadTransformationMatrix(transformationMatrix);
-        GL11.glDrawElements(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, 0);
+        GL11.glDrawArrays(GL30.GL_TRIANGLES, 0, model.getVertexCount());
         GL30.glDisableVertexAttribArray(0);
         GL30.glDisableVertexAttribArray(1);
         GL30.glDisableVertexAttribArray(2);
@@ -101,7 +101,7 @@ public class Renderer {
         //transformationMatrix = Maths.OffSetMatrix(transformationMatrix, new Vector3f(0.5f, 0.0f, 0.5f));
         _shader.loadTransformationMatrix(transformationMatrix);
         //GL40.glDrawArraysInstanced(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, offsets.length /3);
-        GL40.glDrawElementsInstanced(GL30.GL_TRIANGLES, model.getVertexCount(), GL30.GL_UNSIGNED_INT, 0, offsets.length /3);
+        GL40.glDrawArraysInstanced(GL30.GL_TRIANGLES, 0 , model.getVertexCount(), offsets.length /3);
         GL30.glDisableVertexAttribArray(0);
         GL30.glDisableVertexAttribArray(1);
         GL30.glDisableVertexAttribArray(2);

@@ -1,5 +1,6 @@
 package com.saishostudios.saisho.core.components;
 
+import org.joml.Quaternionf;
 import org.joml.Random;
 import org.joml.Vector3f;
 
@@ -9,6 +10,7 @@ public class Dispersion extends Component{
     @Override
     public void onUpdate(float deltaTime) {
         gameObject.transform.position.add(dir.mul(speed * deltaTime, new Vector3f()));
+        //gameObject.transform.rotation.rotateAxis(0.1f * deltaTime, 0.2f, 0.3f, 0.4f );
     }
     @Override
     public void onStart() {

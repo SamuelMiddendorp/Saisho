@@ -5,7 +5,7 @@ import com.saishostudios.saisho.core.graphics.RawModel;
 import com.saishostudios.saisho.core.graphics.Renderer;
 
 public class MeshRenderer extends Component{
-    public RawModel model = OBJLoader.loadObjModel("main/models/cube");
+    public RawModel model;
     private boolean isInited = false;
     @Override
     public void onUpdate(float deltaTime) {

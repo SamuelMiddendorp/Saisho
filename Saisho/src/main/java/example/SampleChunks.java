@@ -5,8 +5,10 @@ import com.saishostudios.saisho.core.SaishoGame;
 import com.saishostudios.saisho.core.components.Dispersion;
 import com.saishostudios.saisho.core.components.InstancedMeshRenderer;
 import com.saishostudios.saisho.core.components.MeshRenderer;
+import com.saishostudios.saisho.core.constants.PrefabType;
 import com.saishostudios.saisho.core.graphics.RawModel;
 import com.saishostudios.saisho.core.scratch.GameObject;
+import com.saishostudios.saisho.core.utils.Prefab;
 import org.joml.Random;
 import org.joml.Vector3f;
 
@@ -19,8 +21,8 @@ public class SampleChunks extends SaishoGame {
     @Override
     public void init() {
         cameraSpeed = 50f;
-        var offsets = createOffsets(100000, 100);
-        RawModel sampleModel = OBJLoader.loadObjModelInstanced("main/models/multiple", offsets);
+        var offsets = createOffsets(1000000, 200);
+        RawModel sampleModel = OBJLoader.loadObjModelInstanced("main/models/david_boom", offsets);
         GameObject player = new GameObject();
         InstancedMeshRenderer mesh = player.addComponent(InstancedMeshRenderer.class);
         mesh.model = sampleModel;

@@ -15,7 +15,7 @@ public class Loader {
 
     public static RawModel loadToVao(float[] positions, float[] colors, float[] normals, int[] indices) {
         int vaoID = createVAO();
-        bindIndicesBuffer(indices);
+        //bindIndicesBuffer(indices);
         storeDataInAttributesList(0, positions);
         storeDataInAttributesList(1, colors);
         storeDataInAttributesList(2, normals);
@@ -24,7 +24,7 @@ public class Loader {
     }
     public static RawModel loadToVaoInstanced(float[] positions, float[] colors, float[] normals, int[] indices, float[] offsets) {
         int vaoID = createVAO();
-        bindIndicesBuffer(indices);
+        //bindIndicesBuffer(indices);
         storeDataInAttributesList(0, positions);
         storeDataInAttributesList(1, colors);
         storeDataInAttributesList(2, normals);

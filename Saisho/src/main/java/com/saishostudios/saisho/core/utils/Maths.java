@@ -11,7 +11,7 @@ public class Maths {
     public static Matrix4f createTransformationMatrix(Vector3f translation, Quaternionf rotation, float scale){
         Matrix4f matrix = new Matrix4f();
         matrix.scale(new Vector3f(scale, scale, scale));
-        matrix.rotate(rotation.normalize());
+        matrix.rotate(rotation);
         matrix.translate(translation);
 
         return matrix;
