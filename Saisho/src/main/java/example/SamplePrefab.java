@@ -14,6 +14,8 @@ public class SamplePrefab extends SaishoGame{
     @Override
     public void init() {
         cameraSpeed = 20f;
+        camera.move(new Vector3f(0,40f, 80));
+        camera.increasePitch(-30f);
         RawModel model = Prefab.create(PrefabType.CUBE);
         var cube = new GameObject();
         MeshRenderer mesh = cube.addComponent(MeshRenderer.class);
@@ -24,7 +26,9 @@ public class SamplePrefab extends SaishoGame{
     @Override
     public void update(float dt) {
         if(inputManager.mouseButtons[0]){
-            createCube();
+            for(int i = 0; i < 50; i ++){
+                createCube();
+            }
         }
     }
 
@@ -37,7 +41,7 @@ public class SamplePrefab extends SaishoGame{
         RawModel model = Prefab.create(PrefabType.CUBE);
         var cube = new GameObject();
         MeshRenderer mesh = cube.addComponent(MeshRenderer.class);
-        cube.transform.position = new Vector3f(rand.nextInt(100), 1.0f, rand.nextInt(100));
+        cube.transform.position = new Vector3f(-50 + rand.nextInt(100), 1.0f, -50 + rand.nextInt(100));
         mesh.model = model;
         world.add(cube);
     }
