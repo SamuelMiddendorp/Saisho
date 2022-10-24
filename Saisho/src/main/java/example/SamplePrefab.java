@@ -30,7 +30,7 @@ public class SamplePrefab extends SaishoGame{
 
     @Override
     public void fixedUpdate(float dt) {
-
+        setWindowTitle(dt + "");
     }
     private void createCube(){
         Random rand = new Random();

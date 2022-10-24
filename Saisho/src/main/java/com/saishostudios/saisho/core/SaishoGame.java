@@ -1,8 +1,11 @@
 package com.saishostudios.saisho.core;
 
 import com.saishostudios.saisho.core.components.Component;
+import com.saishostudios.saisho.core.components.MeshRenderer;
+import com.saishostudios.saisho.core.constants.PrefabType;
 import com.saishostudios.saisho.core.scratch.GameObject;
 import com.saishostudios.saisho.core.utils.Maths;
+import com.saishostudios.saisho.core.utils.Prefab;
 import org.joml.Vector3f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.Version;
@@ -40,6 +43,8 @@ public abstract class SaishoGame{
     protected final InputManager inputManager = new InputManager();
 
     protected float cameraSpeed = 1;
+
+    protected float fixedUpdateStep = 0.05f;
     protected Camera camera;
     private long window;
     protected void setWindowTitle(String value){
@@ -151,11 +156,16 @@ public abstract class SaishoGame{
         // the window or has pressed the ESCAPE key.
         Vector3f ray = mousePicker.getCurrentRay();
         List<RawModel> linesToDraw = new ArrayList<>();
+        float fixedUpdateTimer = 0f;
         float dt = 0.1f;
         double lastTime = glfwGetTime();
+        GameObject light = new GameObject();
+        light.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.CUBE);
+        world.add(light);
         while ( !glfwWindowShouldClose(window) ) {
 
             dt = (float)(glfwGetTime() - lastTime);
+            fixedUpdateTimer += dt;
             lastTime = glfwGetTime();
             inputManager.resetMouseDelta();
             if(inputManager.keys[GLFW_KEY_W]){
@@ -186,7 +196,8 @@ public abstract class SaishoGame{
             mousePicker.getCurrentRay();
             //camera.getPosition().x +=1;
             shader.start();
-            shader.loadLightPos(new Vector3f((float)Math.sin(glfwGetTime()) * 10, 10.0f, -5.0f));
+            light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 10, 3.0f, 0.0f);
+            shader.loadLightPos(light.transform.position);
             shader.loadViewMatrix(camera);
             //camera.move(new Vector3f(50f * dt, 0,-50f * dt));
             //player.setRotY((float)Math.sin(glfwGetTime()) * 360);
@@ -194,6 +205,10 @@ public abstract class SaishoGame{
             //player.setPosition(new Vector3f(0.0f, inputManager.mouseDelta.y, 0.0f);
             //player.setPosition(new Vector3f((float)Math.sin(glfwGetTime())*10,  0.0f, -(float)Math.sin(glfwGetTime())*10));
             //renderer.render(floorEnt, shader);
+            if(fixedUpdateTimer > fixedUpdateStep){
+                fixedUpdate(dt);
+                fixedUpdateTimer = 0f;
+            }
             for (GameObject go : world.getGameObjects()) {
                 for (Component component : go.getComponents()) {
                     component.onUpdate(dt);
@@ -207,7 +222,7 @@ public abstract class SaishoGame{
             shader.stop();
             double f = glfwGetTime();
             glfwSwapBuffers(window); // swap the color buffers
-            System.out.println(("rendering time" + (glfwGetTime() - f) *1000));
+            //System.out.println(("rendering time" + (glfwGetTime() - f) *1000));
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
