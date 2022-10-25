@@ -21,7 +21,7 @@ public class SamplePrefab extends SaishoGame{
         camera.increasePitch(-30f);
 
         RawModel model = Prefab.create(PrefabType.CUBE, null);
-        //model = OBJLoader.loadObjModel("main/models/david_boom");
+        //model = OBJLoader.loadObjModel("main/models/cube");
         var cube = new GameObject();
         cube.addComponent(RotateSin.class);
         MeshRenderer mesh = cube.addComponent(MeshRenderer.class);

@@ -196,7 +196,7 @@ public abstract class SaishoGame{
             mousePicker.getCurrentRay();
             //camera.getPosition().x +=1;
             shader.start();
-            light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 2, 3.0f, (float)Math.cos(glfwGetTime()) * 2);
+            light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 20, 3.0f, (float)Math.cos(glfwGetTime()) * 20);
             shader.loadLightPos(light.transform.position);
             shader.loadViewMatrix(camera);
             //camera.move(new Vector3f(50f * dt, 0,-50f * dt));

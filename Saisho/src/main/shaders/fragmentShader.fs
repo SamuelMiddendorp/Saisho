@@ -8,7 +8,7 @@ void main(){
     vec3 lightVec = lightPos - FragPos;
     float dist = length(lightVec);
     float a = 0.01;
-    float b = 0.1;
+    float b = 0.01;
     float inten = 1.0 / (a * dist * dist * b * dist + 1.0f);
     vec3 lightColor = vec3(1.0f, 1.0f, 1.0f);
 

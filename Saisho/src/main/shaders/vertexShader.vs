@@ -13,7 +13,7 @@ out vec3 normal;
 out vec3 color;
 
 void main(){
-    gl_Position = projectionMatrix * viewMatrix * transformationMatrix * vec4(position + aOffset, 1.0);
+    gl_Position = projectionMatrix * viewMatrix * transformationMatrix * vec4(position, 1.0);
     FragPos = vec3(transformationMatrix * vec4(position, 1.0));
     normal = mat3(transpose(inverse(transformationMatrix))) * aNormal;
     color = in_color;
