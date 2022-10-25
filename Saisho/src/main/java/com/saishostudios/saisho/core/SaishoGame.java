@@ -160,7 +160,7 @@ public abstract class SaishoGame{
         float dt = 0.1f;
         double lastTime = glfwGetTime();
         GameObject light = new GameObject();
-        light.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.CUBE);
+        light.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.CUBE, null);
         world.add(light);
         while ( !glfwWindowShouldClose(window) ) {
 
@@ -196,7 +196,7 @@ public abstract class SaishoGame{
             mousePicker.getCurrentRay();
             //camera.getPosition().x +=1;
             shader.start();
-            light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 50, 3.0f, (float)Math.cos(glfwGetTime()) * 50);
+            light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 2, 3.0f, (float)Math.cos(glfwGetTime()) * 2);
             shader.loadLightPos(light.transform.position);
             shader.loadViewMatrix(camera);
             //camera.move(new Vector3f(50f * dt, 0,-50f * dt));

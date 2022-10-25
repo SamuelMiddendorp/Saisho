@@ -19,7 +19,7 @@ public class DispersionDemo extends SaishoGame {
     @Override
     public void init() {
         cameraSpeed = 50f;
-        RawModel sampleModel = Prefab.create(PrefabType.CUBE);
+        RawModel sampleModel = Prefab.create(PrefabType.CUBE, null);
         Random rand = new Random();
         for (int i = 0; i < 5000; i++) {
             GameObject go = new GameObject();

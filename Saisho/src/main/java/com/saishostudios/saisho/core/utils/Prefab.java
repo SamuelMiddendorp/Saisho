@@ -74,7 +74,7 @@ public class Prefab {
             0.0f, 1.0f, 0.0f,
     };
     private static final float[] unitCube = {
-        -0.5f, -0.5f, -0.5f,
+                -0.5f, -0.5f, -0.5f,
                 0.5f, -0.5f, -0.5f,
                 0.5f,  0.5f, -0.5f,
                 0.5f,  0.5f, -0.5f,
@@ -116,18 +116,64 @@ public class Prefab {
                 -0.5f,  0.5f,  0.5f,
                 -0.5f,  0.5f, -0.5f,
     };
-    public static RawModel create(PrefabType prefabType){
+    public static RawModel create(PrefabType prefabType, Vector3f dims){
         switch (prefabType){
-            case CUBE -> {
-                return createUnitCube();
+            case RECT -> {
+                return createRect(dims.x, dims.y, dims.z);
             }
             default -> {
                 return createUnitCube();
             }
         }
     }
-    public static RawModel create(PrefabType type, Vector3f dims){
-        return null;
+    public static RawModel createRect(float width, float height, float length){
+        var x = width / 2;
+        var y = height /2;
+        var z = length /2;
+        float[] model = {
+                -x, -y, -z,
+                x, -y, -z,
+                x,  y, -z,
+                x,  y, -z,
+                -x,  y, -z,
+                -x, -y, -z,
+
+                -x, -y, z,
+                x, -y,  z,
+                x,  y,  z,
+                x,  y,  z,
+                -x,  y,  z,
+                -x, -y,  z,
+
+                -x,  y,  z,
+                -x,  y, -z,
+                -x, -y, -z,
+                -x, -y, -z,
+                -x, -y,  z,
+                -x,  y,  z,
+
+                x,  y,  z,
+                x,  y, -z,
+                x, -y, -z,
+                x, -y, -z,
+                x, -y,  z,
+                x,  y,  z,
+
+                -x, -y, -z,
+                x, -y, -z,
+                x, -y,  z,
+                x, -y,  z,
+                -x, -y,  z,
+                -x, -y, -z,
+
+                -x,  y, -z,
+                x,  y, -z,
+                x,  y,  z,
+                x,  y,  z,
+                -x,  y,  z,
+                -x,  y, -z,
+        };
+        return Loader.loadToVao(model, COLOR_36, aabbNormals);
     }
     private static RawModel createUnitCube(){
         return Loader.loadToVao(unitCube, COLOR_36, aabbNormals);

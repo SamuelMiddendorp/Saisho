@@ -12,7 +12,7 @@ void main(){
     float inten = 1.0 / (a * dist * dist * b * dist + 1.0f);
     vec3 lightColor = vec3(1.0f, 1.0f, 1.0f);
 
-    float ambientStrength = 0.1;
+    float ambientStrength = 0.4;
     vec3 ambient = ambientStrength * lightColor;
 
     vec3 norm = normalize(normal);

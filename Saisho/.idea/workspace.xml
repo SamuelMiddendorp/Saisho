@@ -7,9 +7,12 @@
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Loader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RotateSin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RotateSin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/PrefabType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/PrefabType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Prefab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Prefab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/DispersionDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/DispersionDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/SamplePrefab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SamplePrefab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" afterDir="false" />
     </list>
