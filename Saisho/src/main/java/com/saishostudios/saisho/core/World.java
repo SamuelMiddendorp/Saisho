@@ -7,7 +7,7 @@ import java.util.List;
 
 public class World {
     private List<GameObject> gameObjects = new ArrayList<>();
-
+    public Camera camera;
     public List<GameObject> getGameObjects() {
         return gameObjects;
     }

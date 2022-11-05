@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/BoxCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Edges.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RigidBody.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/RigidBodyDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Dispersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Dispersion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RotateSin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RotateSin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/WASDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/WASDController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/scratch/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/scratch/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/SamplePrefab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/SamplePrefab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shaders/fragmentShader.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/shaders/vertexShader.vs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shaders/vertexShader.vs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +107,7 @@
       <recent name="com.SaishoStudios.Saisho.Core.Utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SamplePrefab">
+  <component name="RunManager" selected="Application.RigidBodyDemo">
     <configuration name="DispersionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="example.DispersionDemo" />
       <module name="Saisho.main" />
@@ -112,8 +121,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SampleChunks" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="example.SampleChunks" />
+    <configuration name="RigidBodyDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.RigidBodyDemo" />
       <module name="Saisho.main" />
       <extension name="coverage">
         <pattern>
@@ -125,8 +134,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SampleGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="example.SampleGame" />
+    <configuration name="SampleChunks" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="example.SampleChunks" />
       <module name="Saisho.main" />
       <extension name="coverage">
         <pattern>
@@ -166,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RigidBodyDemo" />
         <item itemvalue="Application.SamplePrefab" />
         <item itemvalue="Application.DispersionDemo" />
         <item itemvalue="Application.SampleChunks" />
         <item itemvalue="Application.SampleGameSimplex" />
-        <item itemvalue="Application.SampleGame" />
       </list>
     </recent_temporary>
   </component>
@@ -202,11 +211,21 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
+        <line-breakpoint type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/StaticShader.java</url>
           <line>8</line>
           <properties field="VS_PATH" class="com.saishostudios.saisho.core.graphics.StaticShader" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/graphics/Renderer.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

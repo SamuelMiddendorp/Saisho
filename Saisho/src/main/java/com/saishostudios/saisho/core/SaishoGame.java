@@ -42,9 +42,14 @@ public abstract class SaishoGame{
 
     protected final InputManager inputManager = new InputManager();
 
+    protected boolean blockCameraMovement = false;
+
     protected float cameraSpeed = 1;
 
     protected float fixedUpdateStep = 0.05f;
+
+    protected GameObject light;
+    public static MousePicker mousePicker;
     protected Camera camera;
     private long window;
     protected void setWindowTitle(String value){
@@ -75,6 +80,7 @@ public abstract class SaishoGame{
         logger.log("Hello LWJGL " + Version.getVersion() + "!");
         inputManager.init(window);
         camera = new Camera();
+        world.camera = camera;
         init();
         loop();
         glfwFreeCallbacks(window);
@@ -151,7 +157,7 @@ public abstract class SaishoGame{
         StaticShader shader = new StaticShader();
         Renderer renderer = new Renderer(shader);
         Loader loader = new Loader();
-        MousePicker mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
+        mousePicker = new MousePicker(camera, renderer.getProjectionMatrix());
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         Vector3f ray = mousePicker.getCurrentRay();
@@ -159,7 +165,7 @@ public abstract class SaishoGame{
         float fixedUpdateTimer = 0f;
         float dt = 0.1f;
         double lastTime = glfwGetTime();
-        GameObject light = new GameObject();
+        light = new GameObject();
         light.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.CUBE, null);
         world.add(light);
         while ( !glfwWindowShouldClose(window) ) {
@@ -168,24 +174,26 @@ public abstract class SaishoGame{
             fixedUpdateTimer += dt;
             lastTime = glfwGetTime();
             inputManager.resetMouseDelta();
-            if(inputManager.keys[GLFW_KEY_W]){
-                camera.move(new Vector3f(0.0f, 0.0f, -cameraSpeed * dt));
+            if(!blockCameraMovement) {
+                if (inputManager.keys[GLFW_KEY_W]) {
+                    camera.move(new Vector3f(0.0f, 0.0f, -cameraSpeed * dt));
 
-            }
-            if(inputManager.keys[GLFW_KEY_S]){
-                camera.move(new Vector3f(0.0f, 0.0f, cameraSpeed * dt));
-            }
-            if(inputManager.keys[GLFW_KEY_A]){
-                camera.move(new Vector3f(-cameraSpeed * dt, 0.0f, 0.0f));
-            }
-            if(inputManager.keys[GLFW_KEY_D]){
-                camera.move(new Vector3f(cameraSpeed * dt, 0.0f, 0.0f));
-            }
-            if(inputManager.keys[GLFW_KEY_E]){
-                camera.move(new Vector3f(0.0f, cameraSpeed * dt, 0.0f));
-            }
-            if(inputManager.keys[GLFW_KEY_Q]){
-                camera.move(new Vector3f(0.0f, -cameraSpeed * dt, 0.0f));
+                }
+                if (inputManager.keys[GLFW_KEY_S]) {
+                    camera.move(new Vector3f(0.0f, 0.0f, cameraSpeed * dt));
+                }
+                if (inputManager.keys[GLFW_KEY_A]) {
+                    camera.move(new Vector3f(-cameraSpeed * dt, 0.0f, 0.0f));
+                }
+                if (inputManager.keys[GLFW_KEY_D]) {
+                    camera.move(new Vector3f(cameraSpeed * dt, 0.0f, 0.0f));
+                }
+                if (inputManager.keys[GLFW_KEY_E]) {
+                    camera.move(new Vector3f(0.0f, cameraSpeed * dt, 0.0f));
+                }
+                if (inputManager.keys[GLFW_KEY_Q]) {
+                    camera.move(new Vector3f(0.0f, -cameraSpeed * dt, 0.0f));
+                }
             }
             DoubleBuffer xBuffer = BufferUtils.createDoubleBuffer(1);
             DoubleBuffer yBuffer = BufferUtils.createDoubleBuffer(1);
@@ -193,10 +201,10 @@ public abstract class SaishoGame{
             double x = xBuffer.get(0);
             double y = yBuffer.get(0);
             mousePicker.setMouseCoords(x,y);
-            mousePicker.getCurrentRay();
+            //mousePicker.getCurrentRay();
             //camera.getPosition().x +=1;
             shader.start();
-            light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 20, 3.0f, (float)Math.cos(glfwGetTime()) * 20);
+            //light.transform.position = new Vector3f((float)Math.sin(glfwGetTime()) * 100, 3.0f, (float)Math.cos(glfwGetTime()) * 100);
             shader.loadLightPos(light.transform.position);
             shader.loadViewMatrix(camera);
             //camera.move(new Vector3f(50f * dt, 0,-50f * dt));
@@ -214,6 +222,7 @@ public abstract class SaishoGame{
                     component.onUpdate(dt);
                 }
             }
+
             update(dt);
 
             render();
@@ -239,7 +248,7 @@ public abstract class SaishoGame{
 
     }
 
-    private Vector3f getIntersectingPlane(Vector3f cameraPos, Vector3f ray){
+    public static Vector3f getIntersectingPlane(Vector3f cameraPos, Vector3f ray){
         Vector3f planeNormal = new Vector3f(0.0f, 1.0f, 0.0f);
         Vector3f pointOnPlane = new Vector3f(2.0f, 0.0f, 4.0f);
         Vector3f v = new Vector3f(ray);

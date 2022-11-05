@@ -17,6 +17,14 @@ public class Maths {
         matrix.scale(new Vector3f(scale, scale, scale));
         return matrix;
     }
+    public static boolean aabb(float minX, float minY, float minZ, float maxX, float maxY, float maxZ,  float otherMinX, float otherMinY, float otherMinZ, float otherMaxX, float otherMaxY, float otherMaxZ){
+        return (minX <= otherMaxX &&
+                maxX >= otherMinX &&
+                minY <= otherMaxY &&
+                maxY >= otherMinY &&
+                minZ <= otherMaxZ &&
+                maxZ >= otherMinZ);
+    }
     public static Matrix4f createViewMatrix(Camera camera) {
         Matrix4f viewMatrix = new Matrix4f();
         viewMatrix.rotate((float) Math.toRadians(camera.getPitch()), new Vector3f(1, 0, 0));

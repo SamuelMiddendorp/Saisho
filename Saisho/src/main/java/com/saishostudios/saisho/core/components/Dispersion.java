@@ -7,8 +7,22 @@ import org.joml.Vector3f;
 public class Dispersion extends Component{
     public Vector3f dir;
     public float speed = 1f;
+    public int bounds = 100;
     @Override
     public void onUpdate(float deltaTime) {
+
+//        if(gameObject.transform.position.z >= bounds){
+//            dir.z *= -1f;
+//        }
+//        else if(gameObject.transform.position.z <= -bounds){
+//            dir.z *= -1f;
+//        }
+//        else if(gameObject.transform.position.x <= -bounds){
+//            dir.x *= -1f;
+//        }
+//        else if(gameObject.transform.position.x >= bounds){
+//            dir.x *= -1f;
+//        }
         gameObject.transform.position.add(dir.mul(speed * deltaTime, new Vector3f()));
         //gameObject.transform.rotation.rotateAxis(0.1f * deltaTime, 0.2f, 0.3f, 0.4f );
     }

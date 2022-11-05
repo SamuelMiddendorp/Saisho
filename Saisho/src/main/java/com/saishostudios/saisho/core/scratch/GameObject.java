@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameObject {
-    private static World world;
+    public static World world;
     private String tag = "";
 
     public Transform transform;

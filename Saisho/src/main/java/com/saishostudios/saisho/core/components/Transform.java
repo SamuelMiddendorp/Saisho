@@ -25,4 +25,9 @@ public class Transform extends Component{
     public void onDestroy() {
 
     }
+    public void lookAt(Vector3f front){
+        Vector3f dir = front.sub(position, new Vector3f()).normalize();
+
+        rotation.rotationTo(new Vector3f(0f,1f,1.0f), dir);
+    }
 }

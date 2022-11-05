@@ -9,7 +9,7 @@ public class Saisho {
     public static int WIDTH = 1920;
     public static int HEIGHT = 1080;
     public static float NEAR_PLANE = 0.1F;
-    public static float FAR_PLANE = 1000f;
+    public static float FAR_PLANE = 1000000f;
     public static float[] COLOR_36 = {
             1.0f,0.0f,0.0f,
             1.0f,0.0f,0.0f,
