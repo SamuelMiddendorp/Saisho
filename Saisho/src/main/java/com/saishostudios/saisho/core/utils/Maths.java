@@ -18,12 +18,12 @@ public class Maths {
         return matrix;
     }
     public static boolean aabb(float minX, float minY, float minZ, float maxX, float maxY, float maxZ,  float otherMinX, float otherMinY, float otherMinZ, float otherMaxX, float otherMaxY, float otherMaxZ){
-        return (minX <= otherMaxX &&
-                maxX >= otherMinX &&
-                minY <= otherMaxY &&
-                maxY >= otherMinY &&
-                minZ <= otherMaxZ &&
-                maxZ >= otherMinZ);
+        return (minX < otherMaxX &&
+                maxX > otherMinX &&
+                minY < otherMaxY &&
+                maxY > otherMinY &&
+                minZ < otherMaxZ &&
+                maxZ > otherMinZ);
     }
     public static Matrix4f createViewMatrix(Camera camera) {
         Matrix4f viewMatrix = new Matrix4f();

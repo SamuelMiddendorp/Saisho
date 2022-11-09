@@ -7,9 +7,8 @@
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RigidBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RigidBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/Saisho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/utils/Maths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/RigidBodyDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/RigidBodyDemo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

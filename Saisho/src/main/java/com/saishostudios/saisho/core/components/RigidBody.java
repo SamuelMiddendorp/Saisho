@@ -14,7 +14,9 @@ public class RigidBody extends Component{
         if(!isStatic) {
 
             gameObject.transform.position.add(velocity.mul(deltaTime, new Vector3f()));
-            gameObject.transform.position.y -= gravity * deltaTime;
+            if(!onGround) {
+                gameObject.transform.position.y -= gravity * deltaTime;
+            }
             var boundingBox = gameObject.getComponent(BoxCollider.class);
             if (boundingBox != null) {
                 for (GameObject go : GameObject.world.getGameObjects()) {
@@ -39,6 +41,9 @@ public class RigidBody extends Component{
                                 if (gameObject.transform.position.y > go.transform.position.y) {
                                     gameObject.transform.position.y = go.transform.position.y + otherBoundingBox.h * 2;
                                     onGround = true;
+                                }
+                                else{
+                                    onGround = false;
                                 }
                             }
                         }

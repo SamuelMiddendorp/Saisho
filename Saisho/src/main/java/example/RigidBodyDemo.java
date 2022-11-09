@@ -14,8 +14,9 @@ public class RigidBodyDemo extends SaishoGame {
     private int bounds = 25;
     @Override
     public void init() {
-        blockCameraMovement = true;
+        //blockCameraMovement = true;
         camera.move(new Vector3f(0.0f, 30f, 50f));
+        cameraSpeed = 2f;
         camera.increasePitch(-45f);
         var go = new GameObject();
         go.addComponent(RigidBody.class);
