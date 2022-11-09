@@ -5,18 +5,21 @@ import org.joml.Vector3f;
 
 public class RigidBody extends Component{
     public float mass = 1;
-    public float gravity = 12f;
-    private boolean onGround = false;
+    public float gravity = 0.1f;
+    public boolean onGround = false;
     public boolean isStatic = false;
     public Vector3f velocity;
+
+    public Vector3f acceleration;
     @Override
     public void onUpdate(float deltaTime) {
+
         if(!isStatic) {
 
-            gameObject.transform.position.add(velocity.mul(deltaTime, new Vector3f()));
-            if(!onGround) {
-                gameObject.transform.position.y -= gravity * deltaTime;
-            }
+            //gameObject.transform.position.add(velocity.mul(deltaTime, new Vector3f()));
+            acceleration.y -= gravity;
+
+            onGround = false;
             var boundingBox = gameObject.getComponent(BoxCollider.class);
             if (boundingBox != null) {
                 for (GameObject go : GameObject.world.getGameObjects()) {
@@ -41,20 +44,25 @@ public class RigidBody extends Component{
                                 if (gameObject.transform.position.y > go.transform.position.y) {
                                     gameObject.transform.position.y = go.transform.position.y + otherBoundingBox.h * 2;
                                     onGround = true;
-                                }
-                                else{
-                                    onGround = false;
+                                    go.setFlag("touched", true);
+                                    velocity.y = 0;
                                 }
                             }
                         }
                     }
                 }
+
             }
         }
-
+        velocity.add(acceleration);
+        gameObject.transform.position.add(velocity.mul(deltaTime,new Vector3f()));
+        acceleration.x = 0;
+        acceleration.y = 0;
+        acceleration.z = 0;
     }
     @Override
     public void onStart() {
         velocity = new Vector3f();
+        acceleration = new Vector3f();
     }
 }
