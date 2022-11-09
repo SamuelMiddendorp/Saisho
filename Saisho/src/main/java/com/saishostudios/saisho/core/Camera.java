@@ -22,6 +22,10 @@ public class Camera {
         return m_cameraFront;
     }
 
+    public void setM_cameraPosition(Vector3f m_cameraPosition) {
+        this.m_cameraPosition = m_cameraPosition;
+    }
+
     public void move(Vector3f velocity){
         m_cameraPosition.add(velocity);
         calculateFront();

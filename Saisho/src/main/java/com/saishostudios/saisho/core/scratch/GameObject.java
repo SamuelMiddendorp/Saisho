@@ -1,6 +1,7 @@
 package com.saishostudios.saisho.core.scratch;
 
 import com.saishostudios.saisho.core.World;
+import com.saishostudios.saisho.core.components.CollisionListener;
 import com.saishostudios.saisho.core.components.Component;
 import com.saishostudios.saisho.core.components.Transform;
 
@@ -30,7 +31,15 @@ public class GameObject {
         }
         return null;
     }
-
+    public List<CollisionListener> getCollisionListeners(){
+        List<CollisionListener> listeners = new ArrayList<>();
+        for(Component comp: components){
+            if(comp instanceof CollisionListener){
+                listeners.add((CollisionListener)comp);
+            }
+        }
+        return listeners;
+    }
     public List<Component> getComponents() {
         return components;
     }

@@ -36,6 +36,7 @@ public class PlatformerDemo extends SaishoGame {
         world.add(createPlatform(0,-6));
         world.add(createPlatform(0,-12));
         var moveablePlatform = createPlatform(0, -16);
+        moveablePlatform.addComponent(ColliderResolver.class);
         moveablePlatform.setFlag("touched", false);
         moveablePlatform.withTag("moveable");
         world.add(moveablePlatform);
@@ -46,9 +47,14 @@ public class PlatformerDemo extends SaishoGame {
     public void update(float dt) {
         var platform = GameObject.findByTag("moveable");
         var player = GameObject.findByTag("player");
-        if(platform.getFlag("touched")){
+        if(platform.getFlag("touched") && !player.getComponent(RigidBody.class).onGround){
             platform.transform.position.z -= 6f;
             platform.setFlag("touched", false);
+        }
+        if(player.transform.position.y < -4f){
+            player.transform.position = new Vector3f(0.0f, 5f, -2f);
+            camera.setM_cameraPosition(new Vector3f(0.0f, 25f, 10f));
+            platform.transform.position.z = -16f;
         }
         //platform.setFlag("touched", false);
     }
@@ -61,7 +67,7 @@ public class PlatformerDemo extends SaishoGame {
         var go = new GameObject();
         var rb = go.addComponent(RigidBody.class);
         rb.isStatic = true;
-        go.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.RECT, new Vector3f(2.0f, 0.5f, 1.0f));
+        go.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.RECT, new Vector3f(2.0f, 1.0f, 1.0f));
         BoxCollider bc = go.addComponent(BoxCollider.class);
         bc.w = 1f;
         bc.h = 0.5f;
