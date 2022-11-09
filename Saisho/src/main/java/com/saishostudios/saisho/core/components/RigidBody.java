@@ -44,15 +44,15 @@ public class RigidBody extends Component{
 //                                    gameObject.transform.position.x = go.transform.position.x + otherBoundingBox.w * 2;
 //                                }
                                 // COllision check hierboven is nog een beetje basic
-
+                                for(CollisionListener cl : go.getCollisionListeners()){
+                                    cl.onCollide(gameObject);
+                                }
                                 if (gameObject.transform.position.y <= go.transform.position.y + otherBoundingBox.h * 2) {
                                     gameObject.transform.position.y = go.transform.position.y + otherBoundingBox.h * 2;
                                     onGround = true;
                                     go.setFlag("touched", true);
                                     velocity.y = 0;
-                                    for(CollisionListener cl : go.getCollisionListeners()){
-                                        cl.onCollide(gameObject);
-                                    }
+
                                 }
                             }
                         }

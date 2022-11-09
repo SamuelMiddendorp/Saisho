@@ -3,11 +3,14 @@ package example;
 import com.saishostudios.saisho.core.SaishoGame;
 import com.saishostudios.saisho.core.components.*;
 import com.saishostudios.saisho.core.constants.PrefabType;
+import com.saishostudios.saisho.core.input.InputManager;
 import com.saishostudios.saisho.core.scratch.GameObject;
 import com.saishostudios.saisho.core.utils.Prefab;
 import org.joml.Vector3f;
 
 import java.util.Random;
+
+import static com.saishostudios.saisho.core.constants.SaishoKeys.KEY_X;
 
 public class PlatformerDemo extends SaishoGame {
     private int bounds = 25;
@@ -15,6 +18,7 @@ public class PlatformerDemo extends SaishoGame {
     public void init() {
         //blockCameraMovement = true;
         camera.move(new Vector3f(0.0f, 25f, 10f));
+        //camera.increaseYaw(30f);
         cameraSpeed = 4f;
         camera.increasePitch(-45f);
         var go = new GameObject();
@@ -22,6 +26,7 @@ public class PlatformerDemo extends SaishoGame {
         go.addComponent(RigidBody.class);
         go.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.CUBE, null);
         go.addComponent(WASDController.class).speed = 5f;
+        go.addComponent(ShootBullet.class);
 
         BoxCollider bc = go.addComponent(BoxCollider.class);
         bc.w = 0.5f;
@@ -40,7 +45,15 @@ public class PlatformerDemo extends SaishoGame {
         moveablePlatform.setFlag("touched", false);
         moveablePlatform.withTag("moveable");
         world.add(moveablePlatform);
-
+        var go3 = new GameObject();
+        go3.transform.position.y = -10f;
+        go3.addComponent(RigidBody.class).isStatic = true;
+        go3.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.RECT, new Vector3f(30,1.0f,30));
+        BoxCollider bc3 = go3.addComponent(BoxCollider.class);
+        bc3.w = 15;
+        bc3.h = 0.5f;
+        bc3.l = 15;
+        world.add(go3);
     }
 
     @Override
@@ -51,17 +64,19 @@ public class PlatformerDemo extends SaishoGame {
             platform.transform.position.z -= 6f;
             platform.setFlag("touched", false);
         }
-        if(player.transform.position.y < -4f){
-            player.transform.position = new Vector3f(0.0f, 5f, -2f);
-            camera.setM_cameraPosition(new Vector3f(0.0f, 25f, 10f));
-            platform.transform.position.z = -16f;
-        }
+//        if(player.transform.position.y < -4f){
+//            player.transform.position = new Vector3f(0.0f, 5f, -2f);
+//            camera.setM_cameraPosition(new Vector3f(0.0f, 25f, 10f));
+//            platform.transform.position.z = -16f;
+//        }
         //platform.setFlag("touched", false);
     }
 
     @Override
     public void fixedUpdate(float dt) {
-
+        if(InputManager.keys[KEY_X]){
+            camera.increaseYaw(0.1f);
+        }
     }
     private GameObject createPlatform(int x, int z){
         var go = new GameObject();

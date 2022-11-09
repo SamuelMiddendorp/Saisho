@@ -37,7 +37,7 @@ import static com.saishostudios.saisho.core.constants.Saisho.*;
 
 
 public abstract class SaishoGame{
-    protected World world = new World();
+    protected static World world = new World();
     protected final SaishoLogger logger = new SaishoLogger();
 
     protected final InputManager inputManager = new InputManager();
@@ -169,7 +169,8 @@ public abstract class SaishoGame{
         light.addComponent(MeshRenderer.class).model = Prefab.create(PrefabType.CUBE, null);
         world.add(light);
         while ( !glfwWindowShouldClose(window) ) {
-
+            world.addRange(world.candidates);
+            world.candidates.clear();
             dt = (float)(glfwGetTime() - lastTime);
             fixedUpdateTimer += dt;
             lastTime = glfwGetTime();

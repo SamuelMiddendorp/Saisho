@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cb640a5-b7a7-4c6e-9222-c93ce65c2e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/ColliderResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/CollisionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/ShootBullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/SaishoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RigidBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/components/RigidBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/scratch/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/scratch/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/SaishoKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/saishostudios/saisho/core/constants/SaishoKeys.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/PlatformerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/PlatformerDemo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,11 +93,11 @@
       <recent name="C:\Saisho\Saisho\Saisho\src\main\shaders" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.saishostudios.saisho.core.components" />
       <recent name="example" />
       <recent name="com.saishostudios.saisho.core.graphics" />
       <recent name="com.SaishoStudios.Saisho.Core" />
       <recent name="com.SaishoStudios.Saisho.Core.Graphics" />
-      <recent name="com.SaishoStudios.Saisho.Core.Utils" />
     </key>
   </component>
   <component name="RunManager" selected="Application.PlatformerDemo">
